@@ -1,31 +1,31 @@
 [
   {
-    "name": "Apple",
+    "name": "apple",
     "description": "It's a fruit",
     "seed": 1
   },
   {
-    "name": "Banana",
+    "name": "banana",
     "description": "It's a fruit",
     "seed": 1
   },
   {
-    "name": "Pear",
+    "name": "pear",
     "description": "It's a fruit",
     "seed": 1
   },
   {
-    "name": "Mango",
+    "name": "mango",
     "description": "It's a fruit",
     "seed": 1
   },
   {
-    "name": "Pineapple",
+    "name": "pineapple",
     "description": "It's a fruit",
     "seed": 1
   },
   {
-    "name": "Sausage",
+    "name": "sausage",
     "description": "It's not a fruit",
     "seed": 1
   }

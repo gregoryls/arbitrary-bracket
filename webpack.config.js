@@ -15,7 +15,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "XXXXX",
+      title: "Bracket",
       minify: false,
       template: "./src/index.html",
     }),
