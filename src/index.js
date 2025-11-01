@@ -6,6 +6,11 @@ import * as utils from "./utils.js";
 
 const testDiv = document.getElementById("test");
 
+function isPowerOfTwo(number) {
+  // check using bitwise operator, e.g. 8 = 1000, 7 = 0111.
+  // Only works for powers of two, must restrict to integers or possible false positives
+  return Number.isInteger(number) && number > 0 && !(number & (number - 1));
+}
 console.log(utils.itemImages);
 // const image1 = require(``);
 bracketEntries.forEach((item) => {
