@@ -8,7 +8,7 @@ const testDiv = document.getElementById("test");
 
 function nextPowerOfTwo(number) {
   console.log(typeof number);
-  if (number <= 0 || number > 53 || typeof number !== "number")
+  if (number <= 0 || number > 52 || typeof number !== "number")
     return undefined;
   const nextPower = 2 ** Math.ceil(Math.log2(number));
 
