@@ -7,13 +7,23 @@ import * as utils from "./utils.js";
 const testDiv = document.getElementById("test");
 
 function nextPowerOfTwo(number) {
-  if (number <= 0 || number < 53 || typeof number !== "number")
+  console.log(typeof number);
+  if (number <= 0 || number > 53 || typeof number !== "number")
     return undefined;
   const nextPower = 2 ** Math.ceil(Math.log2(number));
 
   return nextPower;
 }
 
+function generateByes(numberOfEntrants) {
+  const byeCount = nextPowerOfTwo(numberOfEntrants) - numberOfEntrants;
+  console.log(nextPowerOfTwo(numberOfEntrants), byeCount);
+  const byeObjs = [];
+  for (let i = 0; i < byeCount; i += 1) {
+    byeObjs[i] = `bye${i + 1}`;
+  }
+  return byeObjs;
+}
 function testing(number) {
   // check using bitwise operator, e.g. 8 = 1000, 7 = 0111.
   // Only works for powers of two, must restrict to integers or possible false positives
@@ -39,11 +49,4 @@ bracketEntries.forEach((item) => {
   testDiv.append(h2, img);
 });
 
-testing(7);
-
-nextPowerOfTwo(4);
-nextPowerOfTwo(0);
-nextPowerOfTwo(7);
-nextPowerOfTwo(-5);
-nextPowerOfTwo(-4);
-nextPowerOfTwo(8);
+console.log(generateByes(7));
