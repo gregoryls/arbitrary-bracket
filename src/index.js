@@ -7,10 +7,9 @@ import * as utils from "./utils.js";
 const testDiv = document.getElementById("test");
 
 function nextPowerOfTwo(number) {
-  let nextPower;
-  if (number > 0) {
-    nextPower = 2 ** Math.ceil(Math.log2(number));
-  }
+  if (number <= 0 || number < 53 || typeof number !== "number")
+    return undefined;
+  const nextPower = 2 ** Math.ceil(Math.log2(number));
 
   return nextPower;
 }
