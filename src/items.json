@@ -7,27 +7,27 @@
   {
     "name": "banana",
     "description": "It's a fruit",
-    "seed": 1
+    "seed": 2
   },
   {
     "name": "pear",
     "description": "It's a fruit",
-    "seed": 1
+    "seed": 3
   },
   {
     "name": "mango",
     "description": "It's a fruit",
-    "seed": 1
+    "seed": 4
   },
   {
     "name": "pineapple",
     "description": "It's a fruit",
-    "seed": 1
+    "seed": 5
   },
   {
     "name": "sausage",
     "description": "It's not a fruit",
-    "seed": 1
+    "seed": 6
   },
   {
     "name": "strawberry",

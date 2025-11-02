@@ -10,14 +10,14 @@ function isPowerOfTwoTesting(number) {
   // check using bitwise operator, e.g. 8 = 1000, 7 = 0111.
   // Only works for powers of two, must restrict to integers or possible false positives
   let isNotPowerTwo = true;
-  let counter = 0;
+  let gapToPowerOfTwo = 0;
   while (isNotPowerTwo) {
     if (Number.isInteger(number) && number > 0 && !(number & (number - 1))) {
       console.log("Power");
       console.log(counter);
       isNotPowerTwo = false;
     }
-    counter += 1;
+    gapToPowerOfTwo += 1;
     number -= 1;
   }
 }
