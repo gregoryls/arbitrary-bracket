@@ -28,5 +28,10 @@
     "name": "sausage",
     "description": "It's not a fruit",
     "seed": 1
+  },
+  {
+    "name": "strawberry",
+    "description": "It's a fruit",
+    "seed": 7
   }
 ]
