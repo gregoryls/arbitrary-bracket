@@ -30,6 +30,18 @@ function bracketPairings(bracketEntries, byeEntries) {
       team2: { name: byeEntries[i] },
     };
   }
+  for (
+    // offset condition by +1 or it will miss the middle-seed pairing
+    let i = byeEntries.length, j = -1;
+    i < 1 + (bracketEntries.length - byeEntries.length) / 2;
+    i += 1, j -= 1
+  ) {
+    pairings[i] = {
+      team1: bracketEntries[i],
+      team2: bracketEntries.at(j),
+    };
+  }
+  return pairings;
 }
 bracketEntries.forEach((item) => {
   const h2 = document.createElement("h2");
@@ -41,4 +53,6 @@ bracketEntries.forEach((item) => {
   testDiv.append(h2, img);
 });
 
-console.log(generateByes(7));
+console.log(
+  bracketPairings(bracketEntries, generateByes(bracketEntries.length)),
+);
