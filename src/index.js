@@ -57,13 +57,36 @@ function entryDiv(entryObj) {
   }
 
   entryWrap.append(h2, p, img);
+
   return entryWrap;
+}
+
+async function waitForSelection(entry1, entry2) {
+  return new Promise((resolve) => {
+    const handler = (winner) => {
+      entry1.removeEventListener("click", onEntry1);
+      entry2.removeEventListener("click", onEntry2);
+      resolve(winner);
+    };
+
+    const onEntry1 = () => handler(entry1);
+    const onEntry2 = () => handler(entry2);
+
+    entry1.addEventListener("click", onEntry1);
+    entry2.addEventListener("click", onEntry2);
+  });
 }
 
 function displayBracketPairings(pairings) {
   pairings.forEach((pair) => {
     const team1 = entryDiv(pair.team1);
     const team2 = entryDiv(pair.team2);
+    team1.id = "team1";
+    team2.id = "team2";
+
+    team1.addEventListener("click", () => {
+      console.log("click");
+    });
 
     testDiv.append(team1, team2);
   });
