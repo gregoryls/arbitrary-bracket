@@ -55,7 +55,6 @@ function entryDiv(entryObj) {
   if (utils.itemImages[entryObj.name]) {
     img.src = utils.itemImages[entryObj.name];
   }
-  img.src = utils.itemImages[entryObj.name];
 
   entryWrap.append(h2, p, img);
   return entryWrap;
