@@ -77,19 +77,19 @@ async function waitForSelection(entry1, entry2) {
   });
 }
 
-function displayBracketPairings(pairings) {
-  pairings.forEach((pair) => {
+async function displayBracketPairings(pairings) {
+  for (const pair of pairings) {
     const team1 = entryDiv(pair.team1);
     const team2 = entryDiv(pair.team2);
     team1.id = "team1";
     team2.id = "team2";
 
-    team1.addEventListener("click", () => {
-      console.log("click");
-    });
-
+    testDiv.innerHTML = "";
     testDiv.append(team1, team2);
-  });
+
+    const winner = await waitForSelection(team1, team2);
+    console.log(winner);
+  }
 }
 
 const round1Pairs = bracketPairings(
