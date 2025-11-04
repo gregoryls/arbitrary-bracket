@@ -26,8 +26,8 @@ function bracketPairings(bracketEntries, byeEntries) {
   const pairings = [];
   for (let i = 0; i < byeEntries.length; i += 1) {
     pairings[i] = {
-      team1: bracketEntries[i],
-      team2: { name: byeEntries[i] },
+      entry1: bracketEntries[i],
+      entry2: { name: byeEntries[i] },
     };
   }
   for (
@@ -37,8 +37,8 @@ function bracketPairings(bracketEntries, byeEntries) {
     i += 1, j -= 1
   ) {
     pairings[i] = {
-      team1: bracketEntries[i],
-      team2: bracketEntries.at(j),
+      entry1: bracketEntries[i],
+      entry2: bracketEntries.at(j),
     };
   }
   return pairings;
@@ -79,15 +79,15 @@ async function waitForSelection(entry1, entry2) {
 
 async function displayBracketPairings(pairings) {
   for (const pair of pairings) {
-    const team1 = entryDiv(pair.team1);
-    const team2 = entryDiv(pair.team2);
-    team1.id = "team1";
-    team2.id = "team2";
+    const entry1 = entryDiv(pair.entry1);
+    const entry2 = entryDiv(pair.entry2);
+    entry1.id = "entry1";
+    entry2.id = "entry2";
 
     testDiv.innerHTML = "";
-    testDiv.append(team1, team2);
+    testDiv.append(entry1, entry2);
 
-    const winner = await waitForSelection(team1, team2);
+    const winner = await waitForSelection(entry1, entry2);
     console.log(winner);
   }
 }
