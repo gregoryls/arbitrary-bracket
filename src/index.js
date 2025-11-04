@@ -52,6 +52,9 @@ function entryDiv(entryObj) {
 
   h2.textContent = entryObj.name;
   p.textContent = entryObj.description;
+  if (utils.itemImages[entryObj.name]) {
+    img.src = utils.itemImages[entryObj.name];
+  }
   img.src = utils.itemImages[entryObj.name];
 
   entryWrap.append(h2, p, img);
@@ -60,20 +63,10 @@ function entryDiv(entryObj) {
 
 function displayBracketPairings(pairings) {
   pairings.forEach((pair) => {
-    const t1 = document.createElement("div");
-    const t2 = document.createElement("div");
-    const h21 = document.createElement("h2");
-    const h22 = document.createElement("h2");
-    const p1 = document.createElement("p");
-    const p2 = document.createElement("p");
-    const img1 = document.createElement("img");
-    const img2 = document.createElement("img");
+    const team1 = entryDiv(pair.team1);
+    const team2 = entryDiv(pair.team2);
 
-    h21.textContent = pair.team1;
-
-    img.src = utils.itemImages[item.name];
-
-    testDiv.append(h2, img);
+    testDiv.append(team1, team2);
   });
 }
 
@@ -83,3 +76,4 @@ const round1Pairs = bracketPairings(
 );
 
 console.log(Object.keys(round1Pairs[0]).length);
+displayBracketPairings(round1Pairs);
