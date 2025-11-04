@@ -43,16 +43,43 @@ function bracketPairings(bracketEntries, byeEntries) {
   }
   return pairings;
 }
-bracketEntries.forEach((item) => {
+
+function entryDiv(entryObj) {
+  const entryWrap = document.createElement("div");
   const h2 = document.createElement("h2");
+  const p = document.createElement("p");
   const img = document.createElement("img");
 
-  img.src = utils.itemImages[item.name];
-  h2.textContent = item.name;
+  h2.textContent = entryObj.name;
+  p.textContent = entryObj.description;
+  img.src = utils.itemImages[entryObj.name];
 
-  testDiv.append(h2, img);
-});
+  entryWrap.append(h2, p, img);
+  return entryWrap;
+}
 
-console.log(
-  bracketPairings(bracketEntries, generateByes(bracketEntries.length)),
+function displayBracketPairings(pairings) {
+  pairings.forEach((pair) => {
+    const t1 = document.createElement("div");
+    const t2 = document.createElement("div");
+    const h21 = document.createElement("h2");
+    const h22 = document.createElement("h2");
+    const p1 = document.createElement("p");
+    const p2 = document.createElement("p");
+    const img1 = document.createElement("img");
+    const img2 = document.createElement("img");
+
+    h21.textContent = pair.team1;
+
+    img.src = utils.itemImages[item.name];
+
+    testDiv.append(h2, img);
+  });
+}
+
+const round1Pairs = bracketPairings(
+  bracketEntries,
+  generateByes(bracketEntries.length),
 );
+
+console.log(Object.keys(round1Pairs[0]).length);
