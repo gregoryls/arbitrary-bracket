@@ -61,19 +61,19 @@ function entryDiv(entryObj) {
   return entryWrap;
 }
 
-async function waitForSelection(entry1, entry2) {
+async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
   return new Promise((resolve) => {
     const handler = (winner) => {
-      entry1.removeEventListener("click", onEntry1);
-      entry2.removeEventListener("click", onEntry2);
+      entry1Div.removeEventListener("click", onEntry1);
+      entry2Div.removeEventListener("click", onEntry2);
       resolve(winner);
     };
 
-    const onEntry1 = () => handler(entry1);
-    const onEntry2 = () => handler(entry2);
+    const onEntry1 = () => handler(entry1Obj);
+    const onEntry2 = () => handler(entry2Obj);
 
-    entry1.addEventListener("click", onEntry1);
-    entry2.addEventListener("click", onEntry2);
+    entry1Div.addEventListener("click", onEntry1);
+    entry2Div.addEventListener("click", onEntry2);
   });
 }
 
@@ -87,7 +87,12 @@ async function displayBracketPairings(pairings) {
     testDiv.innerHTML = "";
     testDiv.append(entry1, entry2);
 
-    const winner = await waitForSelection(entry1, entry2);
+    const winner = await waitForSelection(
+      entry1,
+      pair.entry1,
+      entry2,
+      pair.entry2,
+    );
     console.log(winner);
   }
 }
