@@ -4,7 +4,7 @@ import * as utils from "./utils.js";
 
 // const dynamicImage = require(`./img/${imageName}.jpg`);
 
-const testDiv = document.getElementById("test");
+const selectionDisplayDiv = document.getElementById("test");
 let pairArray;
 
 function nextPowerOfTwo(number) {
@@ -85,8 +85,8 @@ async function displayBracketPairings(pairings) {
     entry1.id = "entry1";
     entry2.id = "entry2";
 
-    testDiv.innerHTML = "";
-    testDiv.append(entry1, entry2);
+    selectionDisplayDiv.innerHTML = "";
+    selectionDisplayDiv.append(entry1, entry2);
 
     const winner = await waitForSelection(
       entry1,
@@ -95,7 +95,7 @@ async function displayBracketPairings(pairings) {
       pair.entry2,
     );
     console.log(winner);
-    testDiv.innerHTML = "";
+    selectionDisplayDiv.innerHTML = "";
   }
 }
 
