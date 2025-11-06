@@ -5,7 +5,9 @@ import * as utils from "./utils.js";
 // const dynamicImage = require(`./img/${imageName}.jpg`);
 
 const selectionDisplayDiv = document.getElementById("test");
-let pairArray;
+let pairArray = [];
+let winners = [];
+let losers = [];
 
 function nextPowerOfTwo(number) {
   if (number <= 0 || number > 52 || typeof number !== "number")
@@ -64,14 +66,14 @@ function entryDiv(entryObj) {
 
 async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
   return new Promise((resolve) => {
-    const handler = (winner) => {
+    const handler = (winner, loser) => {
       entry1Div.removeEventListener("click", onEntry1);
       entry2Div.removeEventListener("click", onEntry2);
-      resolve(winner);
+      resolve(winner, loser);
     };
     // add comments
-    const onEntry1 = () => handler(entry1Obj);
-    const onEntry2 = () => handler(entry2Obj);
+    const onEntry1 = () => handler(entry1Obj, entry2Obj);
+    const onEntry2 = () => handler(entry2Obj, entry1Obj);
 
     entry1Div.addEventListener("click", onEntry1);
     entry2Div.addEventListener("click", onEntry2);
@@ -94,7 +96,7 @@ async function displayBracketPairings(pairings) {
       entry2,
       pair.entry2,
     );
-    console.log(winner);
+    winners.push(winner);
     selectionDisplayDiv.innerHTML = "";
   }
 }
@@ -104,5 +106,5 @@ pairArray = bracketPairings(
   generateByes(bracketEntries.length),
 );
 
-console.log(Object.keys(pairArray[0]).length);
 displayBracketPairings(pairArray);
+console.log(winners);
