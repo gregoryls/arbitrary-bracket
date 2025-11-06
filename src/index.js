@@ -69,7 +69,7 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
     const handler = (winner, loser) => {
       entry1Div.removeEventListener("click", onEntry1);
       entry2Div.removeEventListener("click", onEntry2);
-      resolve(winner, loser);
+      resolve({ winner, loser });
     };
     // add comments
     const onEntry1 = () => handler(entry1Obj, entry2Obj);
@@ -90,13 +90,14 @@ async function displayBracketPairings(pairings) {
     selectionDisplayDiv.innerHTML = "";
     selectionDisplayDiv.append(entry1, entry2);
 
-    const winner = await waitForSelection(
+    const { winner, loser } = await waitForSelection(
       entry1,
       pair.entry1,
       entry2,
       pair.entry2,
     );
     winners.push(winner);
+    losers.push(loser);
     selectionDisplayDiv.innerHTML = "";
   }
 }
@@ -107,4 +108,4 @@ pairArray = bracketPairings(
 );
 
 displayBracketPairings(pairArray);
-console.log(winners);
+console.log(winners, losers);
