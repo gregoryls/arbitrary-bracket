@@ -5,6 +5,7 @@ import * as utils from "./utils.js";
 // const dynamicImage = require(`./img/${imageName}.jpg`);
 
 const testDiv = document.getElementById("test");
+let pairArray;
 
 function nextPowerOfTwo(number) {
   if (number <= 0 || number > 52 || typeof number !== "number")
@@ -68,7 +69,7 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
       entry2Div.removeEventListener("click", onEntry2);
       resolve(winner);
     };
-
+    // add comments
     const onEntry1 = () => handler(entry1Obj);
     const onEntry2 = () => handler(entry2Obj);
 
@@ -94,13 +95,14 @@ async function displayBracketPairings(pairings) {
       pair.entry2,
     );
     console.log(winner);
+    testDiv.innerHTML = "";
   }
 }
 
-const round1Pairs = bracketPairings(
+pairArray = bracketPairings(
   bracketEntries,
   generateByes(bracketEntries.length),
 );
 
-console.log(Object.keys(round1Pairs[0]).length);
-displayBracketPairings(round1Pairs);
+console.log(Object.keys(pairArray[0]).length);
+displayBracketPairings(pairArray);
