@@ -104,6 +104,7 @@ async function displayBracketPairings(pairings) {
 
 async function test(pairings) {
   winners = [];
+  losers = [];
   await displayBracketPairings(pairings);
   console.log(winners, losers);
   if (winners.length > 1) {
