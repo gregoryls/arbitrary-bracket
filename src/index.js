@@ -5,7 +5,7 @@ import * as utils from "./utils.js";
 // const dynamicImage = require(`./img/${imageName}.jpg`);
 
 const selectionDisplayDiv = document.getElementById("selectionDisplay");
-let initialPairArray = [];
+let pairArray = [];
 let winners = [];
 let losers = [];
 
@@ -102,19 +102,19 @@ async function displayBracketPairings(pairings) {
   }
 }
 
-function test(pairings) {
+async function test(pairings) {
   winners = [];
-  displayBracketPairings(pairings);
+  await displayBracketPairings(pairings);
   console.log(winners, losers);
   if (winners.length > 1) {
+    pairArray = generateBracketPairings(winners, []);
+    await test(pairArray);
   }
 }
 
-initialPairArray = generateBracketPairings(
+pairArray = generateBracketPairings(
   bracketEntries,
   generateByes(bracketEntries.length),
 );
 
-// start next loop, SE first
-
-test(initialPairArray);
+test(pairArray);
