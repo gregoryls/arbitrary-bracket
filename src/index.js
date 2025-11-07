@@ -4,7 +4,7 @@ import * as utils from "./utils.js";
 
 // const dynamicImage = require(`./img/${imageName}.jpg`);
 
-const selectionDisplayDiv = document.getElementById("test");
+const selectionDisplayDiv = document.getElementById("selectionDisplay");
 let pairArray = [];
 let winners = [];
 let losers = [];
@@ -109,3 +109,4 @@ pairArray = bracketPairings(
 
 displayBracketPairings(pairArray);
 console.log(winners, losers);
+// start next loop, SE first
