@@ -25,7 +25,7 @@ function generateByes(numberOfEntrants) {
   }
   return byeObjs;
 }
-function bracketPairings(bracketEntries, byeEntries) {
+function generateBracketPairings(bracketEntries, byeEntries) {
   const pairings = [];
   for (let i = 0; i < byeEntries.length; i += 1) {
     pairings[i] = {
@@ -106,10 +106,11 @@ function test(pairings) {
   winners = [];
   displayBracketPairings(pairings);
   console.log(winners, losers);
-  if (winners.length > 1) test(winners);
+  if (winners.length > 1) {
+  }
 }
 
-initialPairArray = bracketPairings(
+initialPairArray = generateBracketPairings(
   bracketEntries,
   generateByes(bracketEntries.length),
 );
