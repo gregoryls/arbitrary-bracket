@@ -34,9 +34,8 @@ function generateBracketPairings(bracketEntries, byeEntries) {
     };
   }
   for (
-    // offset condition by +1 or it will miss the middle-seed pairing
     let i = byeEntries.length, j = -1;
-    i < 1 + (bracketEntries.length - byeEntries.length) / 2;
+    i < nextPowerOfTwo(bracketEntries.length) / 2;
     i += 1, j -= 1
   ) {
     pairings[i] = {
@@ -82,6 +81,7 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
 
 async function displayBracketPairings(pairings) {
   for (const pair of pairings) {
+    console.log(pair.entry1.name, pair.entry2.name);
     const entry1 = entryDiv(pair.entry1);
     const entry2 = entryDiv(pair.entry2);
     entry1.id = "entry1";
