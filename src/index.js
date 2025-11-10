@@ -5,6 +5,7 @@ import * as utils from "./utils.js";
 // const dynamicImage = require(`./img/${imageName}.jpg`);
 
 const selectionDisplayDiv = document.getElementById("selectionDisplay");
+const roundDisplay = document.getElementById("roundDisplay");
 let pairArray = [];
 let winners = [];
 let losers = [];
@@ -87,6 +88,8 @@ async function displayBracketPairings(pairings) {
     entry1.id = "entry1";
     entry2.id = "entry2";
 
+    roundDisplay.innerHTML = "";
+    roundDisplay.textContent = `Round of ${pairings.length * 2}`;
     selectionDisplayDiv.innerHTML = "";
     selectionDisplayDiv.append(entry1, entry2);
 
@@ -104,7 +107,7 @@ async function displayBracketPairings(pairings) {
 
 async function test(pairings) {
   winners = [];
-  losers = [];
+
   await displayBracketPairings(pairings);
   console.log(winners, losers);
   if (winners.length > 1) {
