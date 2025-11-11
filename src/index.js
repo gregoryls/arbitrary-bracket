@@ -6,6 +6,9 @@ import * as utils from "./utils.js";
 
 const selectionDisplayDiv = document.getElementById("selectionDisplay");
 const roundDisplay = document.getElementById("roundDisplay");
+const results = {};
+let winnerRoundCount = 1;
+let loserRoundCount = 1;
 let pairArray = [];
 let winners = [];
 let losers = [];
@@ -81,8 +84,8 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
 }
 
 async function displayBracketPairings(pairings) {
-  for (const pair of pairings) {
-    console.log(pair.entry1.name, pair.entry2.name);
+  const pairingsCopy = structuredClone(pairings);
+  for (const pair of pairingsCopy) {
     const entry1 = entryDiv(pair.entry1);
     const entry2 = entryDiv(pair.entry2);
     entry1.id = "entry1";
@@ -99,17 +102,21 @@ async function displayBracketPairings(pairings) {
       entry2,
       pair.entry2,
     );
+    winner.win = true;
+    loser.win = false;
     winners.push(winner);
     losers.push(loser);
     selectionDisplayDiv.innerHTML = "";
   }
+  results[`winnerRound${winnerRoundCount}`] = pairingsCopy;
+  console.log(results);
 }
 
 async function test(pairings) {
   winners = [];
 
   await displayBracketPairings(pairings);
-  console.log(winners, losers);
+  console.log("win lose arrays", winners, losers);
   if (winners.length > 1) {
     pairArray = generateBracketPairings(winners, []);
     await test(pairArray);
@@ -120,5 +127,5 @@ pairArray = generateBracketPairings(
   bracketEntries,
   generateByes(bracketEntries.length),
 );
-
+console.log("pair array", pairArray);
 test(pairArray);
