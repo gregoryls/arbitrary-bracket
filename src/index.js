@@ -23,6 +23,12 @@ function nextPowerOfTwo(number) {
   return nextPower;
 }
 
+function getRoundCount(numberOfEntrants) {
+  const totalCount = nextPowerOfTwo(numberOfEntrants);
+  const rounds = Math.log2(totalCount);
+  return rounds;
+}
+
 function generateByes(numberOfEntrants) {
   const byeCount = nextPowerOfTwo(numberOfEntrants) - numberOfEntrants;
   const byeObjs = [];
