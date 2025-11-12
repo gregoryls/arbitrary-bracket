@@ -31,8 +31,18 @@ function generateByes(numberOfEntrants) {
   }
   return byeObjs;
 }
-function generateBracketPairings(bracketEntries, byeEntries) {
+function generateBracketPairings(bracketEntries, byeEntries, otherEntries) {
   const pairings = [];
+  // optional handling of blending winner bracket losers with loser bracket winners
+  if (otherEntries) {
+    for (let i = 0; i < bracketEntries.length; i += 1) {
+      pairings[i] = {
+        entry1: bracketEntries[i],
+        entry2: otherEntries[i],
+      };
+    }
+    return pairings;
+  }
   for (let i = 0; i < byeEntries.length; i += 1) {
     pairings[i] = {
       entry1: bracketEntries[i],
@@ -132,9 +142,21 @@ async function test(pairings) {
   await displayBracketPairings(pairings);
   if (winnerBracketWinners.length > 1) {
     if (currentRound === "Winner") {
-      pairArray = generateBracketPairings(losers, []);
+      // all loser bracket here
+      // split behavior between first loser bracket round and all subsequent rounds
+      if (loserBracketWinners.length) {
+        pairArray.generateBracketPairings(
+          winnerBracketLosers,
+          [],
+          loserBracketWinners,
+        );
+      } else {
+        pairArray = generateBracketPairings(winnerBracketLosers, []);
+      }
+
       currentRound = "Loser";
     } else {
+      // if currentRound === "Loser" -> all winner bracket here
       pairArray = generateBracketPairings(winnerBracketWinners, []);
       currentRound = "Winner";
     }
