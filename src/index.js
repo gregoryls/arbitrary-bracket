@@ -10,8 +10,9 @@ const results = {};
 let winnerRoundCount = 1;
 let loserRoundCount = 1;
 let pairArray = [];
-let winners = [];
-let losers = [];
+let winnerBracketWinners = [];
+let winnerBracketLosers = [];
+let loserBracketWinners = [];
 let currentRound = "Winner";
 
 function nextPowerOfTwo(number) {
@@ -103,10 +104,17 @@ async function displayBracketPairings(pairings) {
       entry2,
       pair.entry2,
     );
+
     winner.win = true;
     loser.win = false;
-    winners.push(winner);
-    losers.push(loser);
+    if (currentRound === "Winner") {
+      winnerBracketWinners.push(winner);
+      winnerBracketLosers.push(loser);
+    }
+    if (currentRound === "Loser") {
+      loserBracketWinners.push(winner);
+    }
+
     selectionDisplayDiv.innerHTML = "";
   }
   results[`winnerRound${winnerRoundCount}`] = pairingsCopy;
@@ -114,17 +122,20 @@ async function displayBracketPairings(pairings) {
 }
 
 async function test(pairings) {
-  winners = [];
-  losers = [];
+  if (currentRound === "Winner") {
+    loserBracketWinners = [];
+  } else {
+    winnerBracketWinners = [];
+    winnerBracketLosers = [];
+  }
 
   await displayBracketPairings(pairings);
-  console.log("win lose arrays", winners, losers);
-  if (winners.length > 1) {
+  if (winnerBracketWinners.length > 1) {
     if (currentRound === "Winner") {
       pairArray = generateBracketPairings(losers, []);
       currentRound = "Loser";
     } else {
-      pairArray = generateBracketPairings(winners, []);
+      pairArray = generateBracketPairings(winnerBracketWinners, []);
       currentRound = "Winner";
     }
     await test(pairArray);
