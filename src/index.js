@@ -12,6 +12,7 @@ let loserRoundCount = 1;
 let pairArray = [];
 let winners = [];
 let losers = [];
+let currentRound = "Winner";
 
 function nextPowerOfTwo(number) {
   if (number <= 0 || number > 52 || typeof number !== "number")
@@ -114,11 +115,18 @@ async function displayBracketPairings(pairings) {
 
 async function test(pairings) {
   winners = [];
+  losers = [];
 
   await displayBracketPairings(pairings);
   console.log("win lose arrays", winners, losers);
   if (winners.length > 1) {
-    pairArray = generateBracketPairings(winners, []);
+    if (currentRound === "Winner") {
+      pairArray = generateBracketPairings(losers, []);
+      currentRound = "Loser";
+    } else {
+      pairArray = generateBracketPairings(winners, []);
+      currentRound = "Winner";
+    }
     await test(pairArray);
   }
 }
@@ -128,4 +136,5 @@ pairArray = generateBracketPairings(
   generateByes(bracketEntries.length),
 );
 console.log("pair array", pairArray);
+console.log(currentRound);
 test(pairArray);
