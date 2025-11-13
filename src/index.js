@@ -133,6 +133,7 @@ async function displayBracketPairings(pairings) {
 
     selectionDisplayDiv.innerHTML = "";
   }
+  // split into win/lose rounds
   results[`winnerRound${winnerRoundCount}`] = pairingsCopy;
   console.log("results", results);
 }
