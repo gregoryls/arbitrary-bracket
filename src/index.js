@@ -160,7 +160,7 @@ async function test(pairings) {
       // all loser bracket here
       // split behavior between first loser bracket round and all subsequent rounds
       if (loserBracketWinners.length) {
-        pairArray.generateBracketPairings(
+        pairArray = generateBracketPairings(
           winnerBracketLosers,
           [],
           loserBracketWinners,
