@@ -3,6 +3,8 @@ import bracketEntries from "./items.json";
 import * as utils from "./utils.js";
 
 // const dynamicImage = require(`./img/${imageName}.jpg`);
+// TODO handle final loser bracket vs winner challenge round
+// check loser bracket length
 
 const selectionDisplayDiv = document.getElementById("selectionDisplay");
 const roundDisplay = document.getElementById("roundDisplay");
@@ -136,7 +138,7 @@ async function displayBracketPairings(pairings) {
 
     selectionDisplayDiv.innerHTML = "";
   }
-  // split into win/lose rounds
+
   if (currentRound === "Winner") {
     results[`winnerRound${winnerRoundCount}`] = pairingsCopy;
   }
