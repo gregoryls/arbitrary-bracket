@@ -121,8 +121,10 @@ async function displayBracketPairings(pairings) {
       pair.entry2,
     );
 
+    console.log("w,l", winner, loser);
     winner.win = true;
     loser.win = false;
+
     if (currentRound === "Winner") {
       winnerBracketWinners.push(winner);
       winnerBracketLosers.push(loser);
@@ -130,15 +132,28 @@ async function displayBracketPairings(pairings) {
     if (currentRound === "Loser") {
       loserBracketWinners.push(winner);
     }
+    console.log("wbl", winnerBracketLosers);
 
     selectionDisplayDiv.innerHTML = "";
   }
   // split into win/lose rounds
-  results[`winnerRound${winnerRoundCount}`] = pairingsCopy;
-  console.log("results", results);
+  if (currentRound === "Winner") {
+    results[`winnerRound${winnerRoundCount}`] = pairingsCopy;
+  }
+  if (currentRound === "Loser") {
+    results[`loserRound${winnerRoundCount}`] = pairingsCopy;
+  }
+
+  console.log("results", results, winnerBracketLosers, loserBracketWinners);
 }
 
 async function test(pairings) {
+  console.log(
+    "ww,wl,lw",
+    winnerBracketWinners,
+    winnerBracketLosers,
+    loserBracketWinners,
+  );
   await displayBracketPairings(pairings);
   if (winnerRoundCount < getRoundCount(bracketEntries.length)) {
     if (currentRound === "Winner") {
@@ -153,6 +168,7 @@ async function test(pairings) {
       } else {
         pairArray = generateBracketPairings(winnerBracketLosers, []);
       }
+      console.log("wbl wipe", winnerBracketLosers);
       winnerBracketLosers = [];
       loserBracketWinners = [];
       currentRound = "Loser";
