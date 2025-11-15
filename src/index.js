@@ -25,9 +25,16 @@ function nextPowerOfTwo(number) {
   return nextPower;
 }
 
-function getRoundCount(numberOfEntrants) {
+function getWinnerRoundCount(numberOfEntrants) {
   const totalCount = nextPowerOfTwo(numberOfEntrants);
   const rounds = Math.log2(totalCount);
+  return rounds;
+}
+
+function getLoserRoundCount(numberOfEntrants) {
+  const totalCount = nextPowerOfTwo(numberOfEntrants);
+  const rounds =
+    Math.log2(totalCount) + Math.ceil(Math.log2(Math.log2(totalCount)));
   return rounds;
 }
 
@@ -157,7 +164,7 @@ async function test(pairings) {
     loserBracketWinners,
   );
   await displayBracketPairings(pairings);
-  if (winnerRoundCount < getRoundCount(bracketEntries.length)) {
+  if (winnerRoundCount < getWinnerRoundCount(bracketEntries.length)) {
     if (currentRound === "Winner") {
       // all loser bracket here
       // split behavior between first loser bracket round and all subsequent rounds
@@ -188,7 +195,6 @@ async function test(pairings) {
     await test(pairArray);
   }
 }
-
 pairArray = generateBracketPairings(
   bracketEntries,
   generateByes(bracketEntries.length),
