@@ -119,7 +119,7 @@ async function displayBracketPairings(pairings) {
     entry2.id = "entry2";
 
     roundDisplay.innerHTML = "";
-    roundDisplay.textContent = `Round of ${pairings.length * 2}`;
+    roundDisplay.textContent = `Round of ${currentRound} ${pairings.length * 2}`;
     selectionDisplayDiv.innerHTML = "";
     selectionDisplayDiv.append(entry1, entry2);
 
@@ -141,7 +141,12 @@ async function displayBracketPairings(pairings) {
     if (currentRound === "Loser") {
       loserBracketWinners.push(winner);
     }
-    console.log("wbl", winnerBracketLosers);
+    console.log(
+      "ww,wl,lw",
+      winnerBracketWinners,
+      winnerBracketLosers,
+      loserBracketWinners,
+    );
 
     selectionDisplayDiv.innerHTML = "";
   }
@@ -153,21 +158,34 @@ async function displayBracketPairings(pairings) {
     results[`loserRound${winnerRoundCount}`] = pairingsCopy;
   }
 
-  console.log("results", results, winnerBracketLosers, loserBracketWinners);
-}
-
-async function test(pairings) {
   console.log(
-    "ww,wl,lw",
-    winnerBracketWinners,
+    "results wbl lbw",
+    results,
     winnerBracketLosers,
     loserBracketWinners,
   );
+}
+
+async function test(pairings) {
   await displayBracketPairings(pairings);
-  if (winnerRoundCount < getWinnerRoundCount(bracketEntries.length)) {
+  if (loserRoundCount < getLoserRoundCount(bracketEntries.length)) {
     if (currentRound === "Winner") {
       // all loser bracket here
       // split behavior between first loser bracket round and all subsequent rounds
+      if (loserBracketWinners.length > winnerBracketLosers.length) {
+        // don't flip current round name, loser bracket sometimes needs extra catchup round
+
+        pairArray = generateBracketPairings(loserBracketWinners, []);
+        winnerBracketLosers = [];
+        loserBracketWinners = [];
+        loserRoundCount += 1;
+
+        console.log("next pair array", pairArray);
+        console.log("round count", winnerRoundCount, loserRoundCount);
+        // restart loop here
+        await test(pairArray);
+      }
+
       if (loserBracketWinners.length) {
         pairArray = generateBracketPairings(
           winnerBracketLosers,
@@ -177,28 +195,28 @@ async function test(pairings) {
       } else {
         pairArray = generateBracketPairings(winnerBracketLosers, []);
       }
-      console.log("wbl wipe", winnerBracketLosers);
       winnerBracketLosers = [];
       loserBracketWinners = [];
+      loserRoundCount += 1;
       currentRound = "Loser";
     } else {
-      // if currentRound === "Loser" -> all winner bracket here
+      // all winner bracket here
+      // can't use if (currentRound === "Loser") or it will chain from block above
       pairArray = generateBracketPairings(winnerBracketWinners, []);
       winnerBracketWinners = [];
 
       currentRound = "Winner";
       winnerRoundCount += 1;
-      console.log("wrc", winnerRoundCount);
     }
     console.log("next pair array", pairArray);
-    console.log("round count", winnerRoundCount);
+    console.log("round count", winnerRoundCount, loserRoundCount);
     await test(pairArray);
   }
 }
+
 pairArray = generateBracketPairings(
   bracketEntries,
   generateByes(bracketEntries.length),
 );
-console.log("pair array", pairArray);
-console.log(currentRound);
+
 test(pairArray);
