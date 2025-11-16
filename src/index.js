@@ -142,16 +142,28 @@ async function displayBracketPairings(pairings) {
     results[`winnerRound${winnerRoundCount}`] = pairingsCopy;
   }
   if (currentRound === "loser") {
-    results[`loserRound${winnerRoundCount}`] = pairingsCopy;
+    results[`loserRound${loserRoundCount}`] = pairingsCopy;
   }
 
   console.log("results", results);
 }
 
 async function test(pairings) {
+  console.log(winnerRoundCount);
   await displayBracketPairings(pairings);
-  console.log(results[`${currentRound}Round${winnerRoundCount}`]);
-  await test(pairArray);
+  if (winnerRoundCount < getWinnerRoundCount(bracketEntries.length)) {
+    const winnerBracketWinners = [];
+    for (const match of results[`winnerRound${winnerRoundCount}`]) {
+      for (const entry of Object.keys(match)) {
+        if (match[entry].win) winnerBracketWinners.push(match[entry]);
+      }
+    }
+
+    winnerRoundCount += 1;
+
+    pairArray = generateBracketPairings(winnerBracketWinners, []);
+    await test(pairArray);
+  }
 }
 
 pairArray = generateBracketPairings(
