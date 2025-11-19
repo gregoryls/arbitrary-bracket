@@ -148,11 +148,22 @@ async function displayBracketPairings(pairings) {
   console.log("results", results);
 }
 
-function getResultArray(roundType, roundCount) {
+function getResultArray(roundType, roundCount, winStatus) {
+  // roundType = 'winner' or 'loser'
+  // roundCount = integer
+  // winStatus = true or false
   const result = [];
   for (const match of results[`${roundType}Round${roundCount}`]) {
     for (const entry of Object.keys(match)) {
-      if (match[entry].win) result.push(match[entry]);
+      // capture wins
+      if (winStatus) {
+        if (match[entry].win) result.push(match[entry]);
+      }
+
+      // capture losses
+      if (!winStatus) {
+        if (!match[entry].win) result.push(match[entry]);
+      }
     }
   }
   return result;
@@ -164,7 +175,11 @@ async function test(pairings) {
   console.log(winnerRoundCount);
   await displayBracketPairings(pairings);
   if (winnerRoundCount < maxWinnerRounds) {
-    const winnerBracketWinners = getResultArray("winner", winnerRoundCount);
+    const winnerBracketWinners = getResultArray(
+      "winner",
+      winnerRoundCount,
+      true,
+    );
 
     winnerRoundCount += 1;
 
