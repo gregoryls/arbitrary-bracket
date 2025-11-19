@@ -164,12 +164,7 @@ async function test(pairings) {
   console.log(winnerRoundCount);
   await displayBracketPairings(pairings);
   if (winnerRoundCount < maxWinnerRounds) {
-    const winnerBracketWinners = [];
-    for (const match of results[`winnerRound${winnerRoundCount}`]) {
-      for (const entry of Object.keys(match)) {
-        if (match[entry].win) winnerBracketWinners.push(match[entry]);
-      }
-    }
+    const winnerBracketWinners = getResultArray("winner", winnerRoundCount);
 
     winnerRoundCount += 1;
 
