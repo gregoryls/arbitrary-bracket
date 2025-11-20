@@ -10,6 +10,7 @@ const selectionDisplayDiv = document.getElementById("selectionDisplay");
 const roundDisplay = document.getElementById("roundDisplay");
 const results = {};
 let winnerRoundCount = 1;
+let winnerRoundCount2 = 1;
 let loserRoundCount = 1;
 let pairArray = [];
 let winnerBracketWinners = [];
@@ -191,8 +192,31 @@ async function test(pairings) {
     (winnerRoundCount = maxWinnerRounds) &&
     loserRoundCount < maxLoserRounds
   ) {
-    const winnerBracketLosers = [];
-    const loserBracketWinners = [];
+    currentRound = "loser";
+    if (loserRoundCount === 1) {
+      // handle first loser round generated only from winner bracket
+      const winnerBracketLosers = getResultArray(
+        "winner",
+        winnerRoundCount2,
+        false,
+      );
+      pairArray = generateBracketPairings(winnerBracketLosers, []);
+      console.log(pairArray);
+      await test(pairArray);
+    }
+    const winnerBracketLosers = getResultArray(
+      "winner",
+      winnerRoundCount2,
+      true,
+    );
+    const loserBracketWinners = getResultArray("loser", loserRoundCount, true);
+
+    pairArray = generateBracketPairings(
+      winnerBracketLosers,
+      [],
+      loserBracketWinners,
+    );
+    await test(pairArray);
   }
 }
 
