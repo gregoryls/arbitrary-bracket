@@ -201,6 +201,7 @@ async function test(pairings) {
         false,
       );
       pairArray = generateBracketPairings(winnerBracketLosers, []);
+      // TODO fix count increments
       console.log(pairArray);
       await test(pairArray);
     }
