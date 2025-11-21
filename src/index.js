@@ -211,6 +211,10 @@ async function test(pairings) {
     );
     const loserBracketWinners = getResultArray("loser", loserRoundCount, true);
 
+    if (loserBracketWinners.length > winnerBracketLosers.length) {
+      pairArray = generateBracketPairings(loserBracketWinners, []);
+      await test(pairArray);
+    }
     pairArray = generateBracketPairings(
       winnerBracketLosers,
       [],
