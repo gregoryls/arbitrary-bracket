@@ -202,7 +202,9 @@ async function test(pairings) {
       );
       pairArray = generateBracketPairings(winnerBracketLosers, []);
       // TODO fix count increments
-      console.log(pairArray);
+
+      winnerRoundCount2 += 1;
+      loserRoundCount += 1;
       await test(pairArray);
     }
     const winnerBracketLosers = getResultArray(
@@ -213,7 +215,10 @@ async function test(pairings) {
     const loserBracketWinners = getResultArray("loser", loserRoundCount, true);
 
     if (loserBracketWinners.length > winnerBracketLosers.length) {
+      // handle offset rounds where loser bracket needs to catch up
       pairArray = generateBracketPairings(loserBracketWinners, []);
+
+      loserRoundCount += 1;
       await test(pairArray);
     }
     pairArray = generateBracketPairings(
@@ -221,6 +226,10 @@ async function test(pairings) {
       [],
       loserBracketWinners,
     );
+
+    // normal operation ends here
+    winnerRoundCount2 += 1;
+    loserRoundCount += 1;
     await test(pairArray);
   }
 }
