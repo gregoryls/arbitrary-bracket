@@ -11,7 +11,7 @@ const roundDisplay = document.getElementById("roundDisplay");
 const results = {};
 let winnerRoundCount = 1;
 let winnerRoundCount2 = 1;
-let loserRoundCount = 1;
+let loserRoundCount = 0;
 let pairArray = [];
 let winnerBracketWinners = [];
 let winnerBracketLosers = [];
@@ -199,7 +199,7 @@ async function test(pairings) {
     loserRoundCount < maxLoserRounds
   ) {
     currentRound = "loser";
-    if (loserRoundCount === 1) {
+    if (loserRoundCount === 0) {
       // handle first loser round generated only from winner bracket
       const winnerBracketLosers = getResultArray(
         "winner",
