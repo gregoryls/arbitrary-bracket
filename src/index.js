@@ -216,7 +216,7 @@ async function test(pairings) {
     const winnerBracketLosers = getResultArray(
       "winner",
       winnerRoundCount2,
-      true,
+      false,
     );
     const loserBracketWinners = getResultArray("loser", loserRoundCount, true);
 
