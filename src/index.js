@@ -7,6 +7,7 @@ import * as utils from "./utils.js";
 // check loser bracket length
 
 const selectionDisplayDiv = document.getElementById("selectionDisplay");
+const matchDisplay = document.getElementById("matchDisplay");
 const roundDisplay = document.getElementById("roundDisplay");
 const results = {};
 let winnerRoundCount = 1;
