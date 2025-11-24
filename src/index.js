@@ -273,6 +273,8 @@ async function test(pairings) {
 pairArray = generateBracketPairings(
   bracketEntries,
   generateByes(bracketEntries.length),
+  false,
+  true,
 );
 
 test(pairArray);
