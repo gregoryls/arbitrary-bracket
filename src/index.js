@@ -51,7 +51,7 @@ function generateByes(numberOfEntrants) {
 }
 function generateBracketPairings(bracketEntries, byeEntries, otherEntries) {
   const pairings = [];
-  // TODO rewrite to split byes with if (byes), otherwise use sequential bracket pairs
+  // TODO first round condition
   // optional handling of blending winner bracket losers with loser bracket winners
   if (otherEntries) {
     for (let i = 0; i < bracketEntries.length; i += 1) {
@@ -62,23 +62,34 @@ function generateBracketPairings(bracketEntries, byeEntries, otherEntries) {
     }
     return pairings;
   }
-  for (let i = 0; i < byeEntries.length; i += 1) {
+  // handle first round scenarios with byes present
+  if (byeEntries) {
+    for (let i = 0; i < byeEntries.length; i += 1) {
+      pairings[i] = {
+        entry1: bracketEntries[i],
+        entry2: { name: byeEntries[i] },
+      };
+    }
+    for (
+      let i = byeEntries.length, j = -1;
+      i < nextPowerOfTwo(bracketEntries.length) / 2;
+      i += 1, j -= 1
+    ) {
+      pairings[i] = {
+        entry1: bracketEntries[i],
+        entry2: bracketEntries.at(j),
+      };
+    }
+    return pairings;
+  }
+
+  // catch-all sequential pairing for all other cases
+  for (let i = 0; i < bracketEntries.length; i += 2) {
     pairings[i] = {
       entry1: bracketEntries[i],
-      entry2: { name: byeEntries[i] },
+      entry2: otherEntries[i + 1],
     };
   }
-  for (
-    let i = byeEntries.length, j = -1;
-    i < nextPowerOfTwo(bracketEntries.length) / 2;
-    i += 1, j -= 1
-  ) {
-    pairings[i] = {
-      entry1: bracketEntries[i],
-      entry2: bracketEntries.at(j),
-    };
-  }
-  return pairings;
 }
 
 function entryDiv(entryObj) {
