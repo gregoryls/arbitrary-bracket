@@ -49,7 +49,12 @@ function generateByes(numberOfEntrants) {
   }
   return byeObjs;
 }
-function generateBracketPairings(bracketEntries, byeEntries, otherEntries) {
+function generateBracketPairings(
+  bracketEntries,
+  byeEntries,
+  otherEntries,
+  firstRoundBool,
+) {
   const pairings = [];
   // TODO first round condition
   // optional handling of blending winner bracket losers with loser bracket winners
@@ -83,6 +88,17 @@ function generateBracketPairings(bracketEntries, byeEntries, otherEntries) {
     return pairings;
   }
 
+  // first round, but no byes needed
+  if (!byeEntries && firstRoundBool) {
+    for (let i = 0, j = -1; i < bracketEntries.length / 2; i += 1, j -= 1) {
+      pairings[i] = {
+        entry1: bracketEntries[i],
+        entry2: bracketEntries.at(j),
+      };
+    }
+    return pairings;
+  }
+
   // catch-all sequential pairing for all other cases
   for (let i = 0; i < bracketEntries.length; i += 2) {
     pairings[i] = {
@@ -90,6 +106,7 @@ function generateBracketPairings(bracketEntries, byeEntries, otherEntries) {
       entry2: otherEntries[i + 1],
     };
   }
+  return pairings;
 }
 
 function entryDiv(entryObj) {
