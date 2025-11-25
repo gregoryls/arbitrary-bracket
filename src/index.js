@@ -145,12 +145,14 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
 async function displayBracketPairings(pairings) {
   // TODO add current match number
   const pairingsCopy = structuredClone(pairings);
+  let matchNumber = 1;
   for (const pair of pairingsCopy) {
     const entry1 = entryDiv(pair.entry1);
     const entry2 = entryDiv(pair.entry2);
     entry1.id = "entry1";
     entry2.id = "entry2";
 
+    // round and match display info
     roundDisplay.innerHTML = "";
     if (currentRound === "winner") {
       roundDisplay.textContent = `Round of ${pairings.length * 2}`;
@@ -158,6 +160,11 @@ async function displayBracketPairings(pairings) {
     if (currentRound === "loser") {
       roundDisplay.textContent = `Loser Round ${loserRoundCount}`;
     }
+
+    matchDisplay.innerHTML = "";
+    matchDisplay.textContent = `Match ${matchNumber}`;
+    matchNumber += 1;
+
     selectionDisplayDiv.innerHTML = "";
     selectionDisplayDiv.append(entry1, entry2);
 
