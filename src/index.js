@@ -99,11 +99,11 @@ function generateBracketPairings(
     return pairings;
   }
 
-  // catch-all sequential pairing for all other cases
+  // catch single-source bracket generation
   for (let i = 0; i < bracketEntries.length; i += 2) {
     pairings[i] = {
       entry1: bracketEntries[i],
-      entry2: otherEntries[i + 1],
+      entry2: bracketEntries[i + 1],
     };
   }
   return pairings;
@@ -216,7 +216,12 @@ function getResultArray(roundType, roundCount, winStatus) {
 async function test(pairings) {
   const maxWinnerRounds = getWinnerRoundCount(bracketEntries.length);
   const maxLoserRounds = getLoserRoundCount(bracketEntries.length);
-  console.log(winnerRoundCount);
+  console.log(
+    "wrc, wrc2, lrc",
+    winnerRoundCount,
+    winnerRoundCount2,
+    loserRoundCount,
+  );
   await displayBracketPairings(pairings);
   if (winnerRoundCount < maxWinnerRounds) {
     const winnerBracketWinners = getResultArray(
@@ -224,10 +229,10 @@ async function test(pairings) {
       winnerRoundCount,
       true,
     );
-
+    console.log(winnerBracketWinners);
     winnerRoundCount += 1;
 
-    pairArray = generateBracketPairings(winnerBracketWinners, []);
+    pairArray = generateBracketPairings(winnerBracketWinners);
     await test(pairArray);
   }
 
