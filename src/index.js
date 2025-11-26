@@ -100,8 +100,8 @@ function generateBracketPairings(
   }
 
   // catch single-source bracket generation
-  for (let i = 0; i < bracketEntries.length; i += 2) {
-    pairings[i] = {
+  for (let i = 0, j = 0; i < bracketEntries.length; i += 2, j += 1) {
+    pairings[j] = {
       entry1: bracketEntries[i],
       entry2: bracketEntries[i + 1],
     };
