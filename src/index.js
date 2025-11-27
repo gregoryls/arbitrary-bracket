@@ -249,12 +249,32 @@ async function test(pairings) {
         false,
       );
       pairArray = generateBracketPairings(winnerBracketLosers, []);
-      // TODO fix count increments
 
       winnerRoundCount2 += 1;
       loserRoundCount += 1;
       await test(pairArray);
     }
+
+    if (loserRoundCount === maxLoserRounds - 1) {
+      // Final round. Loser rounds are 0 indexed to better sync with round display
+      const winnerBracketWinner = getResultArray(
+        "winner",
+        winnerRoundCount,
+        true,
+      );
+      const loserBracketWinner = getResultArray("loser", loserRoundCount, true);
+
+      pairArray = generateBracketPairings(
+        winnerBracketWinner,
+        false,
+        loserBracketWinner,
+      );
+
+      // TODO get out of recursion
+      loserRoundCount += 1;
+      await test(pairArray);
+    }
+
     const winnerBracketLosers = getResultArray(
       "winner",
       winnerRoundCount2,
