@@ -19,6 +19,7 @@ let winnerBracketLosers = [];
 let loserBracketWinners = [];
 let currentRound = "winner";
 let nextRound = "loser";
+let bracketComplete = false;
 
 function nextPowerOfTwo(number) {
   if (number <= 0 || number > 52 || typeof number !== "number")
@@ -223,6 +224,10 @@ async function test(pairings) {
     loserRoundCount,
   );
   await displayBracketPairings(pairings);
+
+  if (bracketComplete) {
+    return;
+  }
   if (winnerRoundCount < maxWinnerRounds) {
     const winnerBracketWinners = getResultArray(
       "winner",
@@ -270,7 +275,7 @@ async function test(pairings) {
         loserBracketWinner,
       );
 
-      // TODO get out of recursion
+      bracketComplete = true;
       loserRoundCount += 1;
       await test(pairArray);
     }
