@@ -256,7 +256,7 @@ async function test(pairings) {
   }
 
   if (
-    (winnerRoundCount = maxWinnerRounds) &&
+    winnerRoundCount === maxWinnerRounds &&
     loserRoundCount < maxLoserRounds
   ) {
     currentRound = "loser";
