@@ -181,6 +181,10 @@ async function displayBracketPairings(pairings) {
     loser.win = false;
 
     selectionDisplayDiv.innerHTML = "";
+
+    if (bracketComplete) {
+      displayWinner(winner);
+    }
   }
 
   if (currentRound === "winner") {
@@ -191,6 +195,16 @@ async function displayBracketPairings(pairings) {
   }
 
   console.log("results", results);
+}
+
+function displayWinner(winnerObj) {
+  roundDisplay.innerHTML = "";
+  matchDisplay.innerHTML = "";
+  selectionDisplayDiv.innerHTML = "";
+
+  const winner = entryDiv(winnerObj);
+  roundDisplay.textContent = "WINNER";
+  selectionDisplayDiv.append(winner);
 }
 
 function getResultArray(roundType, roundCount, winStatus) {
