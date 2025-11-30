@@ -3,7 +3,7 @@ import bracketEntries from "./items.json";
 import * as utils from "./utils.js";
 
 // const dynamicImage = require(`./img/${imageName}.jpg`);
-// TODO handle final loser bracket vs winner challenge round
+
 // check loser bracket length
 
 const selectionDisplayDiv = document.getElementById("selectionDisplay");
@@ -57,7 +57,7 @@ function generateBracketPairings(
   firstRoundBool,
 ) {
   const pairings = [];
-  // TODO first round condition
+
   // optional handling of blending winner bracket losers with loser bracket winners
   if (otherEntries) {
     for (let i = 0; i < bracketEntries.length; i += 1) {
@@ -144,7 +144,6 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
 }
 
 async function displayBracketPairings(pairings) {
-  // TODO add current match number
   const pairingsCopy = structuredClone(pairings);
   let matchNumber = 1;
   for (const pair of pairingsCopy) {
@@ -229,7 +228,6 @@ function getResultArray(roundType, roundCount, winStatus) {
 }
 
 async function test(pairings) {
-  // TODO add returns
   const maxWinnerRounds = getWinnerRoundCount(bracketEntries.length);
   const maxLoserRounds = getLoserRoundCount(bracketEntries.length);
   console.log(
