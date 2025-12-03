@@ -25,3 +25,13 @@ body {
   display: flex;
   justify-content: space-around;
 }
+
+.entry {
+  cursor: pointer;
+}
+
+#selectionDisplay img {
+  max-width: 30vw;
+  max-height: 60vh;
+  border-radius: 16px;
+}

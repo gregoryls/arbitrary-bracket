@@ -116,6 +116,7 @@ function entryDiv(entryObj) {
   const p = document.createElement("p");
   const img = document.createElement("img");
 
+  entryWrap.classList.add("entry");
   h2.textContent = entryObj.name;
   p.textContent = entryObj.description;
 
