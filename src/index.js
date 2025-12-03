@@ -5,6 +5,7 @@ import * as utils from "./utils.js";
 // const dynamicImage = require(`./img/${imageName}.jpg`);
 
 // check loser bracket length
+// TODO click to select entry, then a confirm button on the bottom
 
 const selectionDisplayDiv = document.getElementById("selectionDisplay");
 const matchDisplay = document.getElementById("matchDisplay");
