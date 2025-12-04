@@ -186,10 +186,13 @@ async function displayBracketPairings(pairings) {
     winnerObj.win = true;
     loserObj.win = false;
 
+    // winner highlight class
+    winnerDiv.classList.add("roundWinner");
+
     selectionDisplayDiv.innerHTML = "";
 
     if (bracketComplete) {
-      displayWinner(winner);
+      displayWinner(winnerObj);
     }
   }
 
