@@ -10,6 +10,7 @@ import * as utils from "./utils.js";
 const selectionDisplayDiv = document.getElementById("selectionDisplay");
 const matchDisplay = document.getElementById("matchDisplay");
 const roundDisplay = document.getElementById("roundDisplay");
+const nextRoundButton = document.getElementById("nextRound");
 const results = {};
 let winnerRoundCount = 1;
 let winnerRoundCount2 = 1;
