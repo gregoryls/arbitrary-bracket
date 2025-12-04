@@ -136,14 +136,14 @@ function entryDiv(entryObj) {
 
 async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
   return new Promise((resolve) => {
-    const handler = (winner, loser) => {
+    const handler = (winnerObj, winnerDiv, loserObj, loserDiv) => {
       entry1Div.removeEventListener("click", onEntry1);
       entry2Div.removeEventListener("click", onEntry2);
-      resolve({ winner, loser });
+      resolve({ winnerObj, winnerDiv, loserObj, loserDiv });
     };
     // add comments
-    const onEntry1 = () => handler(entry1Obj, entry2Obj);
-    const onEntry2 = () => handler(entry2Obj, entry1Obj);
+    const onEntry1 = () => handler(entry1Obj, entry1Div, entry2Obj, entry2Div);
+    const onEntry2 = () => handler(entry2Obj, entry2Div, entry1Obj, entry1Div);
 
     entry1Div.addEventListener("click", onEntry1);
     entry2Div.addEventListener("click", onEntry2);
@@ -175,16 +175,16 @@ async function displayBracketPairings(pairings) {
     selectionDisplayDiv.innerHTML = "";
     selectionDisplayDiv.append(entry1, entry2);
 
-    const { winner, loser } = await waitForSelection(
+    const { winnerObj, winnerDiv, loserObj, loserDiv } = await waitForSelection(
       entry1,
       pair.entry1,
       entry2,
       pair.entry2,
     );
 
-    // console.log("w,l", winner, loser);
-    winner.win = true;
-    loser.win = false;
+    console.log("w,l", winnerObj, loserObj);
+    winnerObj.win = true;
+    loserObj.win = false;
 
     selectionDisplayDiv.innerHTML = "";
 
