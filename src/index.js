@@ -143,12 +143,14 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
       nextRoundButton.removeEventListener("click", confirmSelection);
       resolve(current);
     };
-    // add comments
-    // load selection data to be passed through resolve and highlight selected entry
+
     const onEntry1 = () => {
+      // load selection data to be passed through
       current = { entry1Obj, entry2Obj };
+      // set win/loss status
       entry1Obj.win = true;
       entry2Obj.win = false;
+      // css to highlight selected entrant
       entry2Div.classList.remove("roundWinner");
       entry1Div.classList.add("roundWinner");
     };
@@ -191,10 +193,6 @@ async function displayBracketPairings(pairings) {
     selectionDisplayDiv.innerHTML = "";
     selectionDisplayDiv.append(entry1, entry2);
 
-    // console.log(
-    //   await waitForSelection(entry1, pair.entry1, entry2, pair.entry2),
-    // );
-
     const result = await waitForSelection(
       entry1,
       pair.entry1,
@@ -206,6 +204,8 @@ async function displayBracketPairings(pairings) {
     selectionDisplayDiv.innerHTML = "";
 
     if (bracketComplete) {
+      // .values returns an array of the pair objects (final two entries here)
+      // then find which entry had win set to true
       const finalWinner = Object.values(result).find((obj) => obj.win);
       displayWinner(finalWinner);
     }
@@ -358,14 +358,3 @@ pairArray = generateBracketPairings(
 );
 
 test(pairArray);
-
-const obj1 = {
-  obj2: {
-    test: 1,
-    bool: true,
-  },
-  obj3: {
-    test: 2,
-    bool: false,
-  },
-};
