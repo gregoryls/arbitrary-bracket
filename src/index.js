@@ -146,12 +146,16 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
     // add comments
     // load selection data to be passed through resolve and highlight selected entry
     const onEntry1 = () => {
-      current = { entry1Obj, entry1Div, entry2Obj, entry2Div };
+      current = { entry1Obj, entry2Obj };
+      entry1Obj.win = true;
+      entry2Obj.win = false;
       entry2Div.classList.remove("roundWinner");
       entry1Div.classList.add("roundWinner");
     };
     const onEntry2 = () => {
-      current = { entry2Obj, entry2Div, entry1Obj, entry1Div };
+      current = { entry2Obj, entry1Obj };
+      entry2Obj.win = true;
+      entry1Obj.win = false;
       entry1Div.classList.remove("roundWinner");
       entry2Div.classList.add("roundWinner");
     };
@@ -187,16 +191,17 @@ async function displayBracketPairings(pairings) {
     selectionDisplayDiv.innerHTML = "";
     selectionDisplayDiv.append(entry1, entry2);
 
-    const { winnerObj, winnerDiv, loserObj, loserDiv } = await waitForSelection(
+    // console.log(
+    //   await waitForSelection(entry1, pair.entry1, entry2, pair.entry2),
+    // );
+
+    const result = await waitForSelection(
       entry1,
       pair.entry1,
       entry2,
       pair.entry2,
     );
-
-    console.log("w,l", winnerObj, loserObj);
-    winnerObj.win = true;
-    loserObj.win = false;
+    console.log(result);
 
     selectionDisplayDiv.innerHTML = "";
 
