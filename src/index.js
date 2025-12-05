@@ -136,17 +136,29 @@ function entryDiv(entryObj) {
 
 async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
   return new Promise((resolve) => {
-    const handler = (winnerObj, winnerDiv, loserObj, loserDiv) => {
+    let current;
+    const confirmSelection = () => {
       entry1Div.removeEventListener("click", onEntry1);
       entry2Div.removeEventListener("click", onEntry2);
-      resolve({ winnerObj, winnerDiv, loserObj, loserDiv });
+      nextRoundButton.removeEventListener("click", confirmSelection);
+      resolve(current);
     };
     // add comments
-    const onEntry1 = () => handler(entry1Obj, entry1Div, entry2Obj, entry2Div);
-    const onEntry2 = () => handler(entry2Obj, entry2Div, entry1Obj, entry1Div);
+    // load selection data to be passed through resolve and highlight selected entry
+    const onEntry1 = () => {
+      current = { entry1Obj, entry1Div, entry2Obj, entry2Div };
+      entry2Div.classList.remove("roundWinner");
+      entry1Div.classList.add("roundWinner");
+    };
+    const onEntry2 = () => {
+      current = { entry2Obj, entry2Div, entry1Obj, entry1Div };
+      entry1Div.classList.remove("roundWinner");
+      entry2Div.classList.add("roundWinner");
+    };
 
     entry1Div.addEventListener("click", onEntry1);
     entry2Div.addEventListener("click", onEntry2);
+    nextRoundButton.addEventListener("click", confirmSelection);
   });
 }
 
@@ -185,9 +197,6 @@ async function displayBracketPairings(pairings) {
     console.log("w,l", winnerObj, loserObj);
     winnerObj.win = true;
     loserObj.win = false;
-
-    // winner highlight class
-    winnerDiv.classList.add("roundWinner");
 
     selectionDisplayDiv.innerHTML = "";
 
