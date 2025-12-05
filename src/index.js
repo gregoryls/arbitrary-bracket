@@ -206,7 +206,8 @@ async function displayBracketPairings(pairings) {
     selectionDisplayDiv.innerHTML = "";
 
     if (bracketComplete) {
-      displayWinner(winnerObj);
+      const finalWinner = Object.values(result).find((obj) => obj.win);
+      displayWinner(finalWinner);
     }
   }
 
@@ -357,3 +358,14 @@ pairArray = generateBracketPairings(
 );
 
 test(pairArray);
+
+const obj1 = {
+  obj2: {
+    test: 1,
+    bool: true,
+  },
+  obj3: {
+    test: 2,
+    bool: false,
+  },
+};
