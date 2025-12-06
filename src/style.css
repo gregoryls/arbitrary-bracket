@@ -13,6 +13,8 @@ Error (soft crimson) #D16969
 body {
   background-color: #0d0d0d;
   color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
 }
 
 #roundDisplay,
@@ -38,4 +40,10 @@ body {
 
 .roundWinner {
   border: 4px solid green;
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+#nextRound {
+  margin: 5vh 35vw 0 35vw;
 }
