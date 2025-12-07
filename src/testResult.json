@@ -1,0 +1,208 @@
+{
+  "winnerRound1": [
+    {
+      "entry1": {
+        "name": "apple",
+        "description": "It's a fruit",
+        "seed": 1,
+        "win": true
+      },
+      "entry2": {
+        "name": "bye1",
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "banana",
+        "description": "It's a fruit",
+        "seed": 2,
+        "win": true
+      },
+      "entry2": {
+        "name": "strawberry",
+        "description": "It's a fruit",
+        "seed": 7,
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "pear",
+        "description": "It's a fruit",
+        "seed": 3,
+        "win": true
+      },
+      "entry2": {
+        "name": "sausage",
+        "description": "It's not a fruit",
+        "seed": 6,
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "mango",
+        "description": "It's a fruit",
+        "seed": 4,
+        "win": true
+      },
+      "entry2": {
+        "name": "pineapple",
+        "description": "It's a fruit",
+        "seed": 5,
+        "win": false
+      }
+    }
+  ],
+  "winnerRound2": [
+    {
+      "entry1": {
+        "name": "apple",
+        "description": "It's a fruit",
+        "seed": 1,
+        "win": true
+      },
+      "entry2": {
+        "name": "banana",
+        "description": "It's a fruit",
+        "seed": 2,
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "pear",
+        "description": "It's a fruit",
+        "seed": 3,
+        "win": true
+      },
+      "entry2": {
+        "name": "mango",
+        "description": "It's a fruit",
+        "seed": 4,
+        "win": false
+      }
+    }
+  ],
+  "winnerRound3": [
+    {
+      "entry1": {
+        "name": "apple",
+        "description": "It's a fruit",
+        "seed": 1,
+        "win": true
+      },
+      "entry2": {
+        "name": "pear",
+        "description": "It's a fruit",
+        "seed": 3,
+        "win": false
+      }
+    }
+  ],
+  "loserRound1": [
+    {
+      "entry1": {
+        "name": "bye1",
+        "win": true
+      },
+      "entry2": {
+        "name": "pineapple",
+        "description": "It's a fruit",
+        "seed": 5,
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "strawberry",
+        "description": "It's a fruit",
+        "seed": 7,
+        "win": true
+      },
+      "entry2": {
+        "name": "sausage",
+        "description": "It's not a fruit",
+        "seed": 6,
+        "win": false
+      }
+    }
+  ],
+  "loserRound2": [
+    {
+      "entry1": {
+        "name": "banana",
+        "description": "It's a fruit",
+        "seed": 2,
+        "win": true
+      },
+      "entry2": {
+        "name": "bye1",
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "mango",
+        "description": "It's a fruit",
+        "seed": 4,
+        "win": true
+      },
+      "entry2": {
+        "name": "strawberry",
+        "description": "It's a fruit",
+        "seed": 7,
+        "win": false
+      }
+    }
+  ],
+  "loserRound3": [
+    {
+      "entry1": {
+        "name": "banana",
+        "description": "It's a fruit",
+        "seed": 2,
+        "win": true
+      },
+      "entry2": {
+        "name": "mango",
+        "description": "It's a fruit",
+        "seed": 4,
+        "win": false
+      }
+    }
+  ],
+  "loserRound4": [
+    {
+      "entry1": {
+        "name": "pear",
+        "description": "It's a fruit",
+        "seed": 3,
+        "win": true
+      },
+      "entry2": {
+        "name": "banana",
+        "description": "It's a fruit",
+        "seed": 2,
+        "win": false
+      }
+    }
+  ],
+  "loserRound5": [
+    {
+      "entry1": {
+        "name": "apple",
+        "description": "It's a fruit",
+        "seed": 1,
+        "win": true
+      },
+      "entry2": {
+        "name": "pear",
+        "description": "It's a fruit",
+        "seed": 3,
+        "win": false
+      }
+    }
+  ]
+}
