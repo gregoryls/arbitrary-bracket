@@ -47,3 +47,34 @@ body {
 #nextRound {
   margin: 5vh 35vw 0 35vw;
 }
+
+/* bracket display */
+
+#bracketContainer {
+  position: relative;
+  background: #f9f9f9;
+  overflow: auto;
+}
+
+#bracketLines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.matchNode {
+  position: absolute;
+  width: 150px;
+  height: 60px;
+  background: black;
+  border: 1px solid green;
+  border-radius: 4px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px;
+}
