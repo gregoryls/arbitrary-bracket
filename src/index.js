@@ -32,6 +32,15 @@ const BRACKET_CONFIG = {
   // x horizontal gap, y vertical
 };
 
+function getX(roundIndex) {
+  // zero-indexed round number, +20 built-in padding
+  return roundIndex * (BRACKET_CONFIG.MATCH_WIDTH + BRACKET_CONFIG.X_GAP) + 20;
+}
+function getY(matchIndex) {
+  // zero-indexed, vertical slot for matches
+  return roundIndex * (BRACKET_CONFIG.MATCH_HEIGHT + BRACKET_CONFIG.Y_GAP) + 20;
+}
+
 function nextPowerOfTwo(number) {
   if (number <= 0 || number > 52 || typeof number !== "number")
     return undefined;
