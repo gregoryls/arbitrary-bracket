@@ -12,6 +12,9 @@ const selectionDisplayDiv = document.getElementById("selectionDisplay");
 const matchDisplay = document.getElementById("matchDisplay");
 const roundDisplay = document.getElementById("roundDisplay");
 const nextRoundButton = document.getElementById("nextRound");
+
+const bracketContainer = document.getElementById("bracketContainer");
+const matchesLayer = document.getElementById("matchesLayer");
 const results = {};
 let winnerRoundCount = 1;
 let winnerRoundCount2 = 1;
@@ -366,6 +369,16 @@ async function test(pairings) {
     await test(pairArray);
     return;
   }
+}
+
+function getFinalMatches(resultsObj) {}
+
+function displayFinalBracket() {
+  const matches = [
+    { id: "m1", round: 0, row: 0, p1: "Team A", p2: "Team B" },
+    { id: "m2", round: 0, row: 1, p1: "Team C", p2: "Team D" },
+    { id: "m3", round: 1, row: 0.5, p1: "Winner M1", p2: "Winner M2" },
+  ];
 }
 
 pairArray = generateBracketPairings(
