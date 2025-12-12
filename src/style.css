@@ -53,6 +53,7 @@ body {
 #bracketContainer {
   position: relative;
   background: #f9f9f9;
+  color: black;
   overflow: auto;
 }
 
@@ -77,4 +78,5 @@ body {
   flex-direction: column;
   justify-content: center;
   padding: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }

@@ -384,7 +384,7 @@ function displayFinalBracket() {
 
   matches.forEach((match) => {
     const el = document.createElement("div");
-    el.classList.add("match-node");
+    el.classList.add("matchNode");
     el.id = match.id;
 
     el.innerHTML = `
@@ -407,6 +407,7 @@ function displayFinalBracket() {
       },
     };
     matchesLayer.append(el);
+    console.log(nodePositions);
   });
 }
 
