@@ -382,6 +382,8 @@ function displayFinalBracket() {
 
   const nodePositions = {};
 
+  let maxX = 0;
+  let maxY = 0;
   matches.forEach((match) => {
     const el = document.createElement("div");
     el.classList.add("matchNode");
@@ -394,6 +396,8 @@ function displayFinalBracket() {
     // get and set absolute x,y positions
     const xPosition = getX(match.round);
     const yPosition = getY(match.row);
+    if (xPosition > maxX) maxX = xPosition;
+    if (yPosition > maxY) maxY = yPosition;
 
     el.style.left = `${xPosition}px`;
     el.style.top = `${yPosition}px`;
@@ -409,6 +413,13 @@ function displayFinalBracket() {
     matchesLayer.append(el);
     console.log(nodePositions);
   });
+
+  // set bracket container div to fit the matches + 50 extra padding
+  const totalHeight = maxY + BRACKET_CONFIG.MATCH_HEIGHT + 50;
+  const totalWidth = maxX + BRACKET_CONFIG.MATCH_WIDTH + 50;
+
+  bracketContainer.style.height = `${totalHeight}px`;
+  bracketContainer.style.width = `${totalWidth}px`;
 }
 
 pairArray = generateBracketPairings(
