@@ -41,7 +41,7 @@ function getX(roundIndex) {
 }
 function getY(matchIndex) {
   // zero-indexed, vertical slot for matches
-  return roundIndex * (BRACKET_CONFIG.MATCH_HEIGHT + BRACKET_CONFIG.Y_GAP) + 20;
+  return matchIndex * (BRACKET_CONFIG.MATCH_HEIGHT + BRACKET_CONFIG.Y_GAP) + 20;
 }
 
 function nextPowerOfTwo(number) {
@@ -391,6 +391,22 @@ function displayFinalBracket() {
     <div class = "p1">${match.p1}</div>
     <div class = "p2">${match.p2}</div>
     `;
+    // get and set absolute x,y positions
+    const xPosition = getX(match.round);
+    const yPosition = getY(match.row);
+
+    el.style.left = `${xPosition}px`;
+    el.style.top = `${yPosition}px`;
+
+    // save coordinates for line attachments
+    nodePositions[match.id] = {
+      input: { x: xPosition, y: yPosition + BRACKET_CONFIG.MATCH_HEIGHT / 2 },
+      output: {
+        x: xPosition + BRACKET_CONFIG.MATCH_WIDTH,
+        y: yPosition + BRACKET_CONFIG.MATCH_HEIGHT / 2,
+      },
+    };
+    matchesLayer.append(el);
   });
 }
 
@@ -400,5 +416,5 @@ pairArray = generateBracketPairings(
   false,
   true,
 );
-
+displayFinalBracket();
 test(pairArray);
