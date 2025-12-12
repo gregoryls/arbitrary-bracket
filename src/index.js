@@ -379,6 +379,19 @@ function displayFinalBracket() {
     { id: "m2", round: 0, row: 1, p1: "Team C", p2: "Team D" },
     { id: "m3", round: 1, row: 0.5, p1: "Winner M1", p2: "Winner M2" },
   ];
+
+  const nodePositions = {};
+
+  matches.forEach((match) => {
+    const el = document.createElement("div");
+    el.classList.add("match-node");
+    el.id = match.id;
+
+    el.innerHTML = `
+    <div class = "p1">${match.p1}</div>
+    <div class = "p2">${match.p2}</div>
+    `;
+  });
 }
 
 pairArray = generateBracketPairings(
