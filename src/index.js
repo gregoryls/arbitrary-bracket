@@ -375,7 +375,7 @@ async function test(pairings) {
 
 function getFinalMatches(resultsObj) {}
 
-function drawBracketConnector(start, end) {
+function drawBracketLine(start, end) {
   const midX = start.x + (end.x - start.x) / 2;
 
   const pathData = `
@@ -441,6 +441,9 @@ function displayFinalBracket() {
 
   bracketContainer.style.height = `${totalHeight}px`;
   bracketContainer.style.width = `${totalWidth}px`;
+
+  drawBracketLine(nodePositions["m1"].output, nodePositions["m3"].input);
+  drawBracketLine(nodePositions["m2"].output, nodePositions["m3"].input);
 }
 
 pairArray = generateBracketPairings(
