@@ -52,8 +52,7 @@ body {
 
 #bracketContainer {
   position: relative;
-  background: #f9f9f9;
-  color: black;
+
   border: 3px solid pink;
   overflow: auto;
 }
