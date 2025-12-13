@@ -15,6 +15,8 @@ const nextRoundButton = document.getElementById("nextRound");
 
 const bracketContainer = document.getElementById("bracketContainer");
 const matchesLayer = document.getElementById("matchesLayer");
+const bracketLines = document.getElementById("bracketLines");
+
 const results = {};
 let winnerRoundCount = 1;
 let winnerRoundCount2 = 1;
@@ -372,6 +374,25 @@ async function test(pairings) {
 }
 
 function getFinalMatches(resultsObj) {}
+
+function drawBracketConnector(start, end) {
+  const midX = start.x + (end.x - start.x) / 2;
+
+  const pathData = `
+  M ${start.x} ${start.y}
+  H ${midX}
+  V ${end.y}
+  H ${end.x}
+  `;
+
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute("d", pathData);
+  path.setAttribute("stroke", "#ffffffff");
+  path.setAttribute("stroke-width", "2");
+  path.setAttribute("fill", "none");
+
+  bracketLines.append(path);
+}
 
 function displayFinalBracket() {
   const matches = [
