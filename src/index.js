@@ -278,12 +278,12 @@ function getResultArray(roundType, roundCount, winStatus) {
 async function test(pairings) {
   const maxWinnerRounds = getWinnerRoundCount(bracketEntries.length);
   const maxLoserRounds = getLoserRoundCount(bracketEntries.length);
-  console.log(
-    "wrc, wrc2, lrc",
-    winnerRoundCount,
-    winnerRoundCount2,
-    loserRoundCount,
-  );
+  // console.log(
+  //   "wrc, wrc2, lrc",
+  //   winnerRoundCount,
+  //   winnerRoundCount2,
+  //   loserRoundCount,
+  // );
   await displayBracketPairings(pairings);
 
   if (bracketComplete) {
@@ -373,7 +373,30 @@ async function test(pairings) {
   }
 }
 
-function getFinalMatches(resultsObj) {}
+function getFinalMatches(resultsObj) {
+  console.log(resultsObj);
+  // console.log(Object.keys(resultsObj));
+  const matches = [];
+  let winnerMatchCount = 1;
+  let loserMatchCount = 1;
+  // pad winner block with 2 spacer rows above losers
+  const winnersRows = nextPowerOfTwo(bracketEntries.length) + 2;
+
+  for (const round in resultsObj) {
+    console.log(round, resultsObj[round]);
+    for (const match of resultsObj[round]) {
+      const obj = {
+        id: `w${winnerMatchCount}`,
+        round: 0,
+        row: 0,
+        p1: match.entry1.name,
+        p2: match.entry2.name,
+      };
+      matches.push(obj);
+    }
+  }
+  console.log(matches);
+}
 
 function drawBracketLine(start, end) {
   const midX = start.x + (end.x - start.x) / 2;
@@ -432,7 +455,7 @@ function displayFinalBracket() {
       },
     };
     matchesLayer.append(el);
-    console.log(nodePositions);
+    // console.log(nodePositions);
   });
 
   // set bracket container div to fit the matches + 50 extra padding
@@ -452,5 +475,6 @@ pairArray = generateBracketPairings(
   false,
   true,
 );
+getFinalMatches(testResult);
 displayFinalBracket();
 test(pairArray);
