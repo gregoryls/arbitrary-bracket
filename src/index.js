@@ -385,13 +385,26 @@ function getFinalMatches(resultsObj) {
   for (const round in resultsObj) {
     console.log(round, resultsObj[round]);
     for (const match of resultsObj[round]) {
-      const obj = {
-        id: `w${winnerMatchCount}`,
-        round: 0,
-        row: 0,
-        p1: match.entry1.name,
-        p2: match.entry2.name,
-      };
+      let obj;
+      console.log(round);
+      if (round.includes("winner")) {
+        obj = {
+          id: `w${winnerMatchCount}`,
+          round: 0,
+          row: 0,
+          p1: match.entry1.name,
+          p2: match.entry2.name,
+        };
+      } else {
+        obj = {
+          id: `l${loserMatchCount}`,
+          round: 0,
+          row: 0,
+          p1: match.entry1.name,
+          p2: match.entry2.name,
+        };
+      }
+
       matches.push(obj);
     }
   }
