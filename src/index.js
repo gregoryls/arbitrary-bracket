@@ -390,8 +390,8 @@ function getFinalMatches(resultsObj) {
       if (round.includes("winner")) {
         obj = {
           id: `w${winnerMatchCount}`,
-          round: 0,
-          row: 0,
+          round: Number(round.match(/\d+/)[0]),
+          row: winnerMatchCount,
           p1: match.entry1.name,
           p2: match.entry2.name,
         };
