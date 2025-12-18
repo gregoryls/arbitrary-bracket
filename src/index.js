@@ -395,6 +395,7 @@ function getFinalMatches(resultsObj) {
           p1: match.entry1.name,
           p2: match.entry2.name,
         };
+        winnerMatchCount += 1;
       } else {
         obj = {
           id: `l${loserMatchCount}`,
