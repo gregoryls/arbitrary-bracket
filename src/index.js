@@ -399,11 +399,12 @@ function getFinalMatches(resultsObj) {
       } else {
         obj = {
           id: `l${loserMatchCount}`,
-          round: 0,
-          row: 0,
+          round: Number(round.match(/\d+/)[0]),
+          row: loserMatchCount,
           p1: match.entry1.name,
           p2: match.entry2.name,
         };
+        loserMatchCount += 1;
       }
 
       matches.push(obj);
