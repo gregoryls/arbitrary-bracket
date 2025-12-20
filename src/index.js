@@ -380,7 +380,7 @@ function getFinalMatches(resultsObj) {
   let winnerMatchCount = 1;
   let loserMatchCount = 1;
   // pad winner block with 2 spacer rows above losers
-  const winnersRows = nextPowerOfTwo(bracketEntries.length) + 2;
+  const winnersRowsOffset = nextPowerOfTwo(bracketEntries.length) + 2;
 
   for (const round in resultsObj) {
     console.log(round, resultsObj[round]);
@@ -388,6 +388,7 @@ function getFinalMatches(resultsObj) {
       let obj;
       console.log(round);
       if (round.includes("winner")) {
+        // alter first round row calcs
         obj = {
           id: `w${winnerMatchCount}`,
           round: Number(round.match(/\d+/)[0]),
@@ -400,7 +401,7 @@ function getFinalMatches(resultsObj) {
         obj = {
           id: `l${loserMatchCount}`,
           round: Number(round.match(/\d+/)[0]),
-          row: loserMatchCount,
+          row: loserMatchCount + winnersRowsOffset,
           p1: match.entry1.name,
           p2: match.entry2.name,
         };
