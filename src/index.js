@@ -389,30 +389,32 @@ function getFinalMatches(resultsObj) {
     intraRoundMatchCounter = 1;
     for (const match of resultsObj[round]) {
       let obj;
-      let currentRound;
+      let rowCalc;
       console.log(round);
       const currentRound = Number(round.match(/\d+/)[0]);
-      if (round.includes("winner")) {
-        // alter first round row calcs
+      if (currentRound === 1) rowCalc = intraRoundMatchCounter;
+      if (currentRound > 1)
+        if (round.includes("winner")) {
+          // alter first round row calcs
 
-        obj = {
-          id: `w${winnerMatchCount}`,
-          round: Number(round.match(/\d+/)[0]),
-          row: winnerMatchCount,
-          p1: match.entry1.name,
-          p2: match.entry2.name,
-        };
-        winnerMatchCount += 1;
-      } else {
-        obj = {
-          id: `l${loserMatchCount}`,
-          round: Number(round.match(/\d+/)[0]),
-          row: loserMatchCount + winnersRowsOffset,
-          p1: match.entry1.name,
-          p2: match.entry2.name,
-        };
-        loserMatchCount += 1;
-      }
+          obj = {
+            id: `w${winnerMatchCount}`,
+            round: Number(round.match(/\d+/)[0]),
+            row: winnerMatchCount,
+            p1: match.entry1.name,
+            p2: match.entry2.name,
+          };
+          winnerMatchCount += 1;
+        } else {
+          obj = {
+            id: `l${loserMatchCount}`,
+            round: Number(round.match(/\d+/)[0]),
+            row: loserMatchCount + winnersRowsOffset,
+            p1: match.entry1.name,
+            p2: match.entry2.name,
+          };
+          loserMatchCount += 1;
+        }
 
       intraRoundMatchCounter += 1;
       matches.push(obj);
