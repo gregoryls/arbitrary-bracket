@@ -1,1 +1,5 @@
 - edwards paper for bracket methodology
+- formula for match spacing by round
+  - (entrants/4 + 0.5) + (2 \* round)
+    - divide by four, two from the match pairings, two again to find the middle
+    - round zero indexed here
