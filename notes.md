@@ -6,4 +6,4 @@
     - round zero indexed here
 - losers match spacing formulae
   - round 1 always entrants / 4
-  - odd rounds self-play, even new entrants
+  - odd rounds self-play (consider round 1 self-play since all fresh), even new entrants
