@@ -1,9 +1,7 @@
 - edwards paper for bracket methodology
 - formula for match spacing by round in winners bracket
   - round 1 always entrants / 2
-  - (entrants/4 + 0.5) + (2 \* matchCounter)
-    - divide by four, two from the match pairings, two again to find the middle
-    - round zero indexed here
+  - (2^(round-2) + 0.5) + (2^(round-1)) \* (match - 1)
 - losers match spacing formulae
   - round 1 always entrants / 4
   - odd rounds self-play (consider round 1 self-play since all fresh), even new entrants
