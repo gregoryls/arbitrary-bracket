@@ -395,9 +395,9 @@ function getFinalMatches(resultsObj) {
       if (currentRound === 1) rowCalc = intraRoundMatchCounter;
       if (currentRound > 1) {
         rowCalc =
-          nextPowerOfTwo(bracketEntries.length) / 4 +
+          Math.pow(2, currentRound - 2) +
           0.5 +
-          2 * intraRoundMatchCounter;
+          Math.pow(2, currentRound - 1) * (intraRoundMatchCounter - 1);
       }
       if (round.includes("winner")) {
         // alter first round row calcs
@@ -405,7 +405,7 @@ function getFinalMatches(resultsObj) {
         obj = {
           id: `w${winnerMatchCount}`,
           round: Number(round.match(/\d+/)[0]),
-          row: winnerMatchCount,
+          row: rowCalc,
           p1: match.entry1.name,
           p2: match.entry2.name,
         };
