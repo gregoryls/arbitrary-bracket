@@ -411,17 +411,19 @@ function getFinalMatches(resultsObj) {
         };
         winnerMatchCount += 1;
       } else {
+        // loser rounds
         if (currentRound === 1) rowCalc = intraRoundMatchCounter;
-        if (currentRound > 1) {
-          rowCalc =
-            Math.pow(2, currentRound - 2) +
-            0.5 +
-            Math.pow(2, currentRound - 1) * (intraRoundMatchCounter - 1);
+        if (currentRound > 1 && currentRound % 2 === 0) {
+          // even rounds
+          // skip? same as odd rounds, save as array and use matchount - 1 to get?
+        }
+        if (currentRound > 1 && currentRound % 2 !== 0) {
+          // odd rounds
         }
         obj = {
           id: `l${loserMatchCount}`,
           round: Number(round.match(/\d+/)[0]),
-          row: intraRoundMatchCounter + losersRowsOffset,
+          row: rowCalc + losersRowsOffset,
           p1: match.entry1.name,
           p2: match.entry2.name,
         };
