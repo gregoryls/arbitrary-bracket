@@ -414,7 +414,7 @@ function getFinalMatches(resultsObj) {
         obj = {
           id: `l${loserMatchCount}`,
           round: Number(round.match(/\d+/)[0]),
-          row: loserMatchCount + winnersRowsOffset,
+          row: intraRoundMatchCounter + winnersRowsOffset,
           p1: match.entry1.name,
           p2: match.entry2.name,
         };
