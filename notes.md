@@ -5,3 +5,4 @@
 - losers match spacing formulae
   - round 1 always entrants / 4
   - odd rounds self-play (consider round 1 self-play since all fresh), even new entrants
+  - 2^r-3,-4..., 2^r-2,-3...(m-1)
