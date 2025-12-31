@@ -380,18 +380,21 @@ function getFinalMatches(resultsObj) {
   let winnerMatchCount = 1;
   let loserMatchCount = 1;
   let intraRoundMatchCounter = 1;
+  let priorOddLoserSpacing = {};
   // pad winner block with 2 spacer rows above losers
   const losersRowsOffset = nextPowerOfTwo(bracketEntries.length) / 2 + 2;
 
   for (const round in resultsObj) {
-    console.log(round, resultsObj[round]);
+    // console.log(round, resultsObj[round]);
     // reset counter on each fresh round
+    const currentRound = Number(round.match(/\d+/)[0]);
     intraRoundMatchCounter = 1;
+
     for (const match of resultsObj[round]) {
       let obj;
       let rowCalc;
+
       console.log(round);
-      const currentRound = Number(round.match(/\d+/)[0]);
 
       if (round.includes("winner")) {
         if (currentRound === 1) rowCalc = intraRoundMatchCounter;
@@ -416,9 +419,11 @@ function getFinalMatches(resultsObj) {
         if (currentRound > 1 && currentRound % 2 === 0) {
           // even rounds
           // skip? same as odd rounds, save as array and use matchount - 1 to get?
+          console.log(matches, matches.at(-1));
+          // use at(-1) to grab prior
         }
         if (currentRound > 1 && currentRound % 2 !== 0) {
-          // odd rounds
+          rowCalc = 33;
         }
         obj = {
           id: `l${loserMatchCount}`,
