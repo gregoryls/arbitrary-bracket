@@ -388,6 +388,7 @@ function getFinalMatches(resultsObj) {
     // console.log(round, resultsObj[round]);
     // reset counter on each fresh round
     const currentRound = Number(round.match(/\d+/)[0]);
+    priorOddLoserSpacing.currentRound = [];
     intraRoundMatchCounter = 1;
 
     for (const match of resultsObj[round]) {
@@ -424,6 +425,7 @@ function getFinalMatches(resultsObj) {
         }
         if (currentRound > 1 && currentRound % 2 !== 0) {
           rowCalc = 33;
+          priorOddLoserSpacing.currentRound.push(rowCalc);
         }
         obj = {
           id: `l${loserMatchCount}`,
