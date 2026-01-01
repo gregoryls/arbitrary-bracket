@@ -416,7 +416,10 @@ function getFinalMatches(resultsObj) {
         winnerMatchCount += 1;
       } else {
         // loser rounds
-        if (currentRound === 1) rowCalc = intraRoundMatchCounter;
+        if (currentRound === 1) {
+          rowCalc = intraRoundMatchCounter;
+          priorOddLoserSpacing.currentRound.push(rowCalc);
+        }
         if (currentRound > 1 && currentRound % 2 === 0) {
           // even rounds
           // skip? same as odd rounds, save as array and use matchount - 1 to get?
