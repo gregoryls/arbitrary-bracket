@@ -380,6 +380,7 @@ function getFinalMatches(resultsObj) {
   let winnerMatchCount = 1;
   let loserMatchCount = 1;
   let intraRoundMatchCounter = 1;
+  let oddLoserRoundCounter = 0;
   let priorOddLoserSpacing = {};
   // pad winner block with 2 spacer rows above losers
   const losersRowsOffset = nextPowerOfTwo(bracketEntries.length) / 2 + 2;
@@ -427,8 +428,12 @@ function getFinalMatches(resultsObj) {
           // use at(-1) to grab prior
         }
         if (currentRound > 1 && currentRound % 2 !== 0) {
-          rowCalc = 33;
+          rowCalc =
+            Math.pow(2, currentRound - 3 - oddLoserRoundCounter) +
+            Math.pow(2, currentRound - 2 - oddLoserRoundCounter) *
+              (intraRoundMatchCounter - 1);
           priorOddLoserSpacing.currentRound.push(rowCalc);
+          // increment counters
         }
         obj = {
           id: `l${loserMatchCount}`,
