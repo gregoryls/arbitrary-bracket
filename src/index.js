@@ -428,12 +428,14 @@ function getFinalMatches(resultsObj) {
           // use at(-1) to grab prior
         }
         if (currentRound > 1 && currentRound % 2 !== 0) {
+          // odd rounds
           rowCalc =
             Math.pow(2, currentRound - 3 - oddLoserRoundCounter) +
             Math.pow(2, currentRound - 2 - oddLoserRoundCounter) *
               (intraRoundMatchCounter - 1);
           priorOddLoserSpacing.currentRound.push(rowCalc);
-          // increment counters
+          intraRoundMatchCounter += 1;
+          oddLoserRoundCounter += 1;
         }
         obj = {
           id: `l${loserMatchCount}`,
