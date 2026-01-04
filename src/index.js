@@ -389,7 +389,7 @@ function getFinalMatches(resultsObj) {
     // console.log(round, resultsObj[round]);
     // reset counter on each fresh round
     const currentRound = Number(round.match(/\d+/)[0]);
-    priorOddLoserSpacing.currentRound = [];
+    priorOddLoserSpacing[currentRound] = [];
     intraRoundMatchCounter = 1;
 
     for (const match of resultsObj[round]) {
@@ -419,7 +419,8 @@ function getFinalMatches(resultsObj) {
         // loser rounds
         if (currentRound === 1) {
           rowCalc = intraRoundMatchCounter;
-          priorOddLoserSpacing.currentRound.push(rowCalc);
+          console.log(currentRound);
+          priorOddLoserSpacing[`${currentRound}`].push(rowCalc);
         }
         if (currentRound > 1 && currentRound % 2 === 0) {
           // even rounds
@@ -433,7 +434,8 @@ function getFinalMatches(resultsObj) {
             Math.pow(2, currentRound - 3 - oddLoserRoundCounter) +
             Math.pow(2, currentRound - 2 - oddLoserRoundCounter) *
               (intraRoundMatchCounter - 1);
-          priorOddLoserSpacing.currentRound.push(rowCalc);
+          priorOddLoserSpacing[`${currentRound}`].push(rowCalc);
+          console.log("current round:", currentRound, priorOddLoserSpacing);
           intraRoundMatchCounter += 1;
           oddLoserRoundCounter += 1;
         }
