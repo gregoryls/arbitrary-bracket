@@ -420,13 +420,14 @@ function getFinalMatches(resultsObj) {
         if (currentRound === 1) {
           rowCalc = intraRoundMatchCounter;
           console.log(currentRound);
-          priorOddLoserSpacing[`${currentRound}`].push(rowCalc);
+          priorOddLoserSpacing[currentRound].push(rowCalc);
         }
         if (currentRound > 1 && currentRound % 2 === 0) {
           // even rounds
-          // skip? same as odd rounds, save as array and use matchount - 1 to get?
-          console.log(matches, matches.at(-1));
-          // use at(-1) to grab prior
+
+          // get prior round spacing (current - 1), then account for matches indexing at 1, array at 0
+          rowCalc =
+            priorOddLoserSpacing[currentRound - 1][intraRoundMatchCounter - 1];
         }
         if (currentRound > 1 && currentRound % 2 !== 0) {
           // odd rounds
@@ -434,7 +435,7 @@ function getFinalMatches(resultsObj) {
             Math.pow(2, currentRound - 3 - oddLoserRoundCounter) +
             Math.pow(2, currentRound - 2 - oddLoserRoundCounter) *
               (intraRoundMatchCounter - 1);
-          priorOddLoserSpacing[`${currentRound}`].push(rowCalc);
+          priorOddLoserSpacing[currentRound].push(rowCalc);
           console.log("current round:", currentRound, priorOddLoserSpacing);
           intraRoundMatchCounter += 1;
           oddLoserRoundCounter += 1;
