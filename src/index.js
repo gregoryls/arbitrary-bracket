@@ -433,6 +433,7 @@ function getFinalMatches(resultsObj) {
           // odd rounds
           rowCalc =
             Math.pow(2, currentRound - 3 - oddLoserRoundCounter) +
+            0.5 +
             Math.pow(2, currentRound - 2 - oddLoserRoundCounter) *
               (intraRoundMatchCounter - 1);
           priorOddLoserSpacing[currentRound].push(rowCalc);
