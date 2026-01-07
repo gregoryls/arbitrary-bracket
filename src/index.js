@@ -443,7 +443,7 @@ function getFinalMatches(resultsObj) {
         }
 
         if (currentRound === getLoserRoundCount(bracketEntries.length)) {
-          rowCalc = losersRowsOffset + 0.5;
+          rowCalc = 0.5;
         }
         obj = {
           id: `l${loserMatchCount}`,
