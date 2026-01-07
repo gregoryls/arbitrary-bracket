@@ -441,6 +441,10 @@ function getFinalMatches(resultsObj) {
           intraRoundMatchCounter += 1;
           oddLoserRoundCounter += 1;
         }
+
+        if (currentRound === getLoserRoundCount(bracketEntries.length)) {
+          rowCalc = losersRowsOffset + 0.5;
+        }
         obj = {
           id: `l${loserMatchCount}`,
           round: Number(round.match(/\d+/)[0]),
