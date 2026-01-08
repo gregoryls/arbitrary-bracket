@@ -443,7 +443,10 @@ function getFinalMatches(resultsObj) {
         }
 
         if (currentRound === getLoserRoundCount(bracketEntries.length)) {
-          rowCalc = 0.5;
+          // want 0.5 past winner bracket, but subtract 2 from that to account for the
+          // already established offset buffer
+          rowCalc = -1.5;
+          console.log(losersRowsOffset);
         }
         obj = {
           id: `l${loserMatchCount}`,
