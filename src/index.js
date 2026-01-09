@@ -463,6 +463,7 @@ function getFinalMatches(resultsObj) {
     }
   }
   console.log(matches);
+  return matches;
 }
 
 function drawBracketLine(start, end) {
