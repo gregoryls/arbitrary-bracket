@@ -519,7 +519,16 @@ function displayFinalBracket() {
   bracketContainer.style.height = `${totalHeight}px`;
   bracketContainer.style.width = `${totalWidth}px`;
 
-  console.log(nodePositions);
+  Object.keys(nodePositions).forEach((key) => {
+    const split = key.match(/([wl])(\d+)/);
+    const nextRoundNum = Number(split[2]) + 1;
+
+    console.log(split[1] + nextRoundNum);
+    drawBracketLine(
+      nodePositions[key].output,
+      nodePositions[split[1] + nextRoundNum].input,
+    );
+  });
 
   drawBracketLine(nodePositions["m1"].output, nodePositions["m3"].input);
   drawBracketLine(nodePositions["m2"].output, nodePositions["m3"].input);
