@@ -486,12 +486,7 @@ function drawBracketLine(start, end) {
 }
 
 function displayFinalBracket() {
-  const matches = [
-    { id: "m1", round: 0, row: 0, p1: "Team A", p2: "Team B" },
-    { id: "m2", round: 0, row: 1, p1: "Team C", p2: "Team D" },
-    { id: "m3", round: 1, row: 0.5, p1: "Winner M1", p2: "Winner M2" },
-  ];
-
+  const matches = getFinalMatches(testResult);
   const nodePositions = {};
 
   let maxX = 0;
@@ -543,6 +538,6 @@ pairArray = generateBracketPairings(
   false,
   true,
 );
-getFinalMatches(testResult);
+// getFinalMatches(testResult);
 displayFinalBracket();
 test(pairArray);
