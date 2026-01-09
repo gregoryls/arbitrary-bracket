@@ -374,8 +374,6 @@ async function test(pairings) {
 }
 
 function getFinalMatches(resultsObj) {
-  console.log(resultsObj);
-  // console.log(Object.keys(resultsObj));
   const matches = [];
   let winnerMatchCount = 1;
   let loserMatchCount = 1;
@@ -386,7 +384,6 @@ function getFinalMatches(resultsObj) {
   const losersRowsOffset = nextPowerOfTwo(bracketEntries.length) / 2 + 2;
 
   for (const round in resultsObj) {
-    // console.log(round, resultsObj[round]);
     // reset counter on each fresh round
     const currentRound = Number(round.match(/\d+/)[0]);
     priorOddLoserSpacing[currentRound] = [];
@@ -395,8 +392,6 @@ function getFinalMatches(resultsObj) {
     for (const match of resultsObj[round]) {
       let obj;
       let rowCalc;
-
-      console.log(round);
 
       if (round.includes("winner")) {
         if (currentRound === 1) rowCalc = intraRoundMatchCounter;
@@ -419,7 +414,6 @@ function getFinalMatches(resultsObj) {
         // loser rounds
         if (currentRound === 1) {
           rowCalc = intraRoundMatchCounter;
-          console.log(currentRound);
           priorOddLoserSpacing[currentRound].push(rowCalc);
         }
         if (currentRound > 1 && currentRound % 2 === 0) {
@@ -437,7 +431,6 @@ function getFinalMatches(resultsObj) {
             Math.pow(2, currentRound - 2 - oddLoserRoundCounter) *
               (intraRoundMatchCounter - 1);
           priorOddLoserSpacing[currentRound].push(rowCalc);
-          console.log("current round:", currentRound, priorOddLoserSpacing);
           intraRoundMatchCounter += 1;
           oddLoserRoundCounter += 1;
         }
@@ -446,7 +439,6 @@ function getFinalMatches(resultsObj) {
           // want 0.5 past winner bracket, but subtract 2 from that to account for the
           // already established offset buffer
           rowCalc = -1.5;
-          console.log(losersRowsOffset);
         }
         obj = {
           id: `l${loserMatchCount}`,
@@ -518,7 +510,6 @@ function displayFinalBracket() {
       },
     };
     matchesLayer.append(el);
-    // console.log(nodePositions);
   });
 
   // set bracket container div to fit the matches + 50 extra padding
@@ -527,6 +518,8 @@ function displayFinalBracket() {
 
   bracketContainer.style.height = `${totalHeight}px`;
   bracketContainer.style.width = `${totalWidth}px`;
+
+  console.log(nodePositions);
 
   drawBracketLine(nodePositions["m1"].output, nodePositions["m3"].input);
   drawBracketLine(nodePositions["m2"].output, nodePositions["m3"].input);
