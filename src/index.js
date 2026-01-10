@@ -527,6 +527,12 @@ function displayFinalBracket() {
     const split = key.match(/([wl])(\d+)/);
     if (split[1] === "w") {
       const nextInput = `w${winnerInputCounter + halfEntrantCount}`;
+
+      if (
+        nodePositions[key].round === getWinnerRoundCount(bracketEntries.length)
+      ) {
+        console.log("final round");
+      }
       drawBracketLine(
         nodePositions[key].output,
         nodePositions[nextInput].input,
