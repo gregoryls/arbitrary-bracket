@@ -480,6 +480,8 @@ function drawBracketLine(start, end) {
 function displayFinalBracket() {
   const matches = getFinalMatches(testResult);
   const nodePositions = {};
+  const halfEntrantCount = nextPowerOfTwo(bracketEntries.length) / 2;
+  let winnerInputCounter = 1;
 
   let maxX = 0;
   let maxY = 0;
@@ -508,6 +510,7 @@ function displayFinalBracket() {
         x: xPosition + BRACKET_CONFIG.MATCH_WIDTH,
         y: yPosition + BRACKET_CONFIG.MATCH_HEIGHT / 2,
       },
+      round: match.round,
     };
     matchesLayer.append(el);
   });
@@ -519,19 +522,33 @@ function displayFinalBracket() {
   bracketContainer.style.height = `${totalHeight}px`;
   bracketContainer.style.width = `${totalWidth}px`;
 
+  console.log(nodePositions);
   Object.keys(nodePositions).forEach((key) => {
     const split = key.match(/([wl])(\d+)/);
-    const nextRoundNum = Number(split[2]) + 1;
-
-    console.log(split[1] + nextRoundNum);
-    drawBracketLine(
-      nodePositions[key].output,
-      nodePositions[split[1] + nextRoundNum].input,
-    );
+    if (split[1] === "w") {
+      const nextInput = `w${winnerInputCounter + halfEntrantCount}`;
+      drawBracketLine(
+        nodePositions[key].output,
+        nodePositions[nextInput].input,
+      );
+      if (Number(split[2]) % 2 === 0) {
+        // only increment counter every other match since a winner bracket funnels two into one
+        winnerInputCounter += 1;
+      }
+    }
+    if (split[1] === "l") {
+      console.log("lose");
+    }
+    // const nextRoundNum = Number(split[2]) + 1;
+    // console.log(split[1] + nextRoundNum);
+    // drawBracketLine(
+    //   nodePositions[key].output,
+    //   nodePositions[split[1] + nextRoundNum].input,
+    // );
   });
 
-  drawBracketLine(nodePositions["m1"].output, nodePositions["m3"].input);
-  drawBracketLine(nodePositions["m2"].output, nodePositions["m3"].input);
+  // drawBracketLine(nodePositions["m1"].output, nodePositions["m3"].input);
+  // drawBracketLine(nodePositions["m2"].output, nodePositions["m3"].input);
 }
 
 pairArray = generateBracketPairings(
