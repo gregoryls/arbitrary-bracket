@@ -531,7 +531,13 @@ function displayFinalBracket() {
       if (
         nodePositions[key].round === getWinnerRoundCount(bracketEntries.length)
       ) {
-        console.log("final round");
+        // winner and loser brackets have same match count, apply current count to l-ID to match
+        // winner winner with loser winner in final round
+        const finalRoundId = `l${split[2]}`;
+        drawBracketLine(
+          nodePositions[key].output,
+          nodePositions[finalRoundId].input,
+        );
       }
       drawBracketLine(
         nodePositions[key].output,
