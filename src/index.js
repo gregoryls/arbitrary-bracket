@@ -481,6 +481,7 @@ function displayFinalBracket() {
   const matches = getFinalMatches(testResult);
   const nodePositions = {};
   const halfEntrantCount = nextPowerOfTwo(bracketEntries.length) / 2;
+  const maxWinnerRounds = getWinnerRoundCount(bracketEntries.length);
   let winnerInputCounter = 1;
 
   let maxX = 0;
@@ -528,9 +529,8 @@ function displayFinalBracket() {
     if (split[1] === "w") {
       const nextInput = `w${winnerInputCounter + halfEntrantCount}`;
 
-      if (
-        nodePositions[key].round === getWinnerRoundCount(bracketEntries.length)
-      ) {
+      if (nodePositions[key].round === maxWinnerRounds) {
+        // final round exception
         // winner and loser brackets have same match count, apply current count to l-ID to match
         // winner winner with loser winner in final round
         const finalRoundId = `l${split[2]}`;
@@ -539,10 +539,11 @@ function displayFinalBracket() {
           nodePositions[finalRoundId].input,
         );
       }
-      drawBracketLine(
-        nodePositions[key].output,
-        nodePositions[nextInput].input,
-      );
+      if (nodePositions[key].round < maxWinnerRounds)
+        drawBracketLine(
+          nodePositions[key].output,
+          nodePositions[nextInput].input,
+        );
       if (Number(split[2]) % 2 === 0) {
         // only increment counter every other match since a winner bracket funnels two into one
         winnerInputCounter += 1;
