@@ -483,6 +483,8 @@ function displayFinalBracket() {
   const halfEntrantCount = nextPowerOfTwo(bracketEntries.length) / 2;
   const maxWinnerRounds = getWinnerRoundCount(bracketEntries.length);
   let winnerInputCounter = 1;
+  let loserOddInputCounter = 1;
+  let loserEvenInputCounter = 1;
 
   let maxX = 0;
   let maxY = 0;
@@ -551,6 +553,12 @@ function displayFinalBracket() {
     }
     if (split[1] === "l") {
       console.log("lose");
+      if (nodePositions[key].round % 2 === 0) {
+        // even rounds
+      }
+      if (nodePositions[key].round % 2 !== 0) {
+        //odd rounds
+      }
     }
     // const nextRoundNum = Number(split[2]) + 1;
     // console.log(split[1] + nextRoundNum);
