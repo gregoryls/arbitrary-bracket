@@ -553,8 +553,9 @@ function displayFinalBracket() {
       }
     }
     if (split[1] === "l") {
-      if (nodePositions[key.round === maxLoserRounds]) {
-        console.log("testend");
+      if (nodePositions[key].round === maxLoserRounds) {
+        // final loser round has no output, bracket is finished
+        return;
       }
 
       const nextInputId = `l${loserInputCounter + quarterEntrantCount}`;
