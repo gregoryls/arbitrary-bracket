@@ -275,7 +275,7 @@ function getResultArray(roundType, roundCount, winStatus) {
   return result;
 }
 
-async function test(pairings) {
+async function main(pairings) {
   const maxWinnerRounds = getWinnerRoundCount(bracketEntries.length);
   const maxLoserRounds = getLoserRoundCount(bracketEntries.length);
   // console.log(
@@ -301,7 +301,7 @@ async function test(pairings) {
     winnerRoundCount += 1;
 
     pairArray = generateBracketPairings(winnerBracketWinners);
-    await test(pairArray);
+    await main(pairArray);
     return;
   }
 
@@ -321,7 +321,7 @@ async function test(pairings) {
 
       winnerRoundCount2 += 1;
       loserRoundCount += 1;
-      await test(pairArray);
+      await main(pairArray);
       return;
     }
 
@@ -342,7 +342,7 @@ async function test(pairings) {
 
       bracketComplete = true;
       loserRoundCount += 1;
-      await test(pairArray);
+      await main(pairArray);
       return;
     }
 
@@ -358,7 +358,7 @@ async function test(pairings) {
       pairArray = generateBracketPairings(loserBracketWinners, []);
 
       loserRoundCount += 1;
-      await test(pairArray);
+      await main(pairArray);
       return;
     }
     pairArray = generateBracketPairings(
@@ -370,7 +370,7 @@ async function test(pairings) {
     // normal operation ends here
     winnerRoundCount2 += 1;
     loserRoundCount += 1;
-    await test(pairArray);
+    await main(pairArray);
     return;
   }
 }
@@ -602,4 +602,4 @@ pairArray = generateBracketPairings(
 );
 // getFinalMatches(testResult);
 displayFinalBracket();
-test(pairArray);
+main(pairArray);
