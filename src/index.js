@@ -231,7 +231,6 @@ async function displayBracketPairings(pairings) {
       // then find which entry had win set to true
       const finalWinner = Object.values(result).find((obj) => obj.win);
       displayWinner(finalWinner);
-      displayFinalBracket(results);
     }
   }
 
@@ -288,6 +287,8 @@ async function test(pairings) {
   await displayBracketPairings(pairings);
 
   if (bracketComplete) {
+    // final, complete brack generation
+    displayFinalBracket(results);
     return;
   }
   if (winnerRoundCount < maxWinnerRounds) {
