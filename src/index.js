@@ -481,10 +481,11 @@ function displayFinalBracket() {
   const matches = getFinalMatches(testResult);
   const nodePositions = {};
   const halfEntrantCount = nextPowerOfTwo(bracketEntries.length) / 2;
+  const quarterEntrantCount = halfEntrantCount / 2;
   const maxWinnerRounds = getWinnerRoundCount(bracketEntries.length);
+  const maxLoserRounds = getLoserRoundCount(bracketEntries.length);
   let winnerInputCounter = 1;
-  let loserOddInputCounter = 1;
-  let loserEvenInputCounter = 1;
+  let loserInputCounter = 1;
 
   let maxX = 0;
   let maxY = 0;
@@ -529,7 +530,7 @@ function displayFinalBracket() {
   Object.keys(nodePositions).forEach((key) => {
     const split = key.match(/([wl])(\d+)/);
     if (split[1] === "w") {
-      const nextInput = `w${winnerInputCounter + halfEntrantCount}`;
+      const nextInputId = `w${winnerInputCounter + halfEntrantCount}`;
 
       if (nodePositions[key].round === maxWinnerRounds) {
         // final round exception
@@ -544,7 +545,7 @@ function displayFinalBracket() {
       if (nodePositions[key].round < maxWinnerRounds)
         drawBracketLine(
           nodePositions[key].output,
-          nodePositions[nextInput].input,
+          nodePositions[nextInputId].input,
         );
       if (Number(split[2]) % 2 === 0) {
         // only increment counter every other match since a winner bracket funnels two into one
@@ -552,12 +553,30 @@ function displayFinalBracket() {
       }
     }
     if (split[1] === "l") {
-      console.log("lose");
+      if (nodePositions[key.round === maxLoserRounds]) {
+        console.log("testend");
+      }
+
+      const nextInputId = `l${loserInputCounter + quarterEntrantCount}`;
+
       if (nodePositions[key].round % 2 === 0) {
         // even rounds
+        drawBracketLine(
+          nodePositions[key].output,
+          nodePositions[nextInputId].input,
+        );
+        if (Number(split[2]) % 2 === 0) {
+          // only increment counter every other match since a winner bracket funnels two into one
+          loserInputCounter += 1;
+        }
       }
       if (nodePositions[key].round % 2 !== 0) {
         //odd rounds
+        drawBracketLine(
+          nodePositions[key].output,
+          nodePositions[nextInputId].input,
+        );
+        loserInputCounter += 1;
       }
     }
     // const nextRoundNum = Number(split[2]) + 1;
