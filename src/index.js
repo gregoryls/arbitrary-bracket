@@ -231,6 +231,7 @@ async function displayBracketPairings(pairings) {
       // then find which entry had win set to true
       const finalWinner = Object.values(result).find((obj) => obj.win);
       displayWinner(finalWinner);
+      displayFinalBracket(results);
     }
   }
 
@@ -477,8 +478,8 @@ function drawBracketLine(start, end) {
   bracketLines.append(path);
 }
 
-function displayFinalBracket() {
-  const matches = getFinalMatches(testResult);
+function displayFinalBracket(resultsObj) {
+  const matches = getFinalMatches(resultsObj);
   const nodePositions = {};
   const halfEntrantCount = nextPowerOfTwo(bracketEntries.length) / 2;
   const quarterEntrantCount = halfEntrantCount / 2;
