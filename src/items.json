@@ -1,37 +1,62 @@
 [
   {
-    "name": "apple",
-    "description": "It's a fruit",
+    "name": "The Tainted Cup",
+    "description": "Robert Jackson Bennett",
     "seed": 1
   },
   {
-    "name": "banana",
-    "description": "It's a fruit",
+    "name": "The Will of the Many",
+    "description": "James Islington",
     "seed": 2
   },
   {
-    "name": "pear",
-    "description": "It's a fruit",
+    "name": "The Fellowship of the Ring",
+    "description": "J. R. R. Tolkien",
     "seed": 3
   },
   {
-    "name": "mango",
-    "description": "It's a fruit",
+    "name": "The 100-Year-Old Man Who Climbed Out the Window and Disappeared",
+    "description": "Jonas Jonasson",
     "seed": 4
   },
   {
-    "name": "pineapple",
-    "description": "It's a fruit",
+    "name": "Furies of Calderon",
+    "description": "Jim Butcher",
     "seed": 5
   },
   {
-    "name": "sausage",
-    "description": "It's not a fruit",
+    "name": "Steve Jobs",
+    "description": "Walter Isaacson",
     "seed": 6
   },
   {
-    "name": "strawberry",
-    "description": "It's a fruit",
+    "name": "Stoner",
+    "description": "John Williams",
     "seed": 7
+  },
+  {
+    "name": "Old Man's War",
+    "description": "John Scalzi",
+    "seed": 8
+  },
+  {
+    "name": "The Devils",
+    "description": "Joe Abercrombie",
+    "seed": 9
+  },
+  {
+    "name": "Frankenstein ",
+    "description": "Mary Shelley",
+    "seed": 10
+  },
+  {
+    "name": "Annie Bot",
+    "description": "Sierra Greer",
+    "seed": 11
+  },
+  {
+    "name": "Red Rabbit",
+    "description": "Alex Grecian",
+    "seed": 12
   }
 ]

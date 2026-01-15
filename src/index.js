@@ -601,5 +601,5 @@ pairArray = generateBracketPairings(
   true,
 );
 // getFinalMatches(testResult);
-displayFinalBracket();
+// displayFinalBracket(testResult);
 main(pairArray);
