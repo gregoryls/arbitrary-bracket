@@ -84,8 +84,7 @@ function getWinnerRoundCount(numberOfEntrants) {
 
 function getLoserRoundCount(numberOfEntrants) {
   const totalCount = nextPowerOfTwo(numberOfEntrants);
-  const rounds =
-    Math.log2(totalCount) + Math.ceil(Math.log2(Math.log2(totalCount)));
+  const rounds = Math.log2(totalCount) * 2 - 1;
   return rounds;
 }
 
@@ -564,6 +563,7 @@ function displayFinalBracket(resultsObj) {
         // winner and loser brackets have same match count, apply current count to l-ID to match
         // winner winner with loser winner in final round
         const finalMatchId = `l${split[2]}`;
+        console.log(finalMatchId);
         drawBracketLine(
           nodePositions[key].output,
           nodePositions[finalMatchId].input,
