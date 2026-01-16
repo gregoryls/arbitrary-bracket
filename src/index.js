@@ -37,6 +37,28 @@ const BRACKET_CONFIG = {
   // x horizontal gap, y vertical
 };
 
+function adjustMatchNodeHeight() {
+  const dummy = document.createElement("div");
+  dummy.className = "matchNode";
+  dummy.style.visibility = "hidden";
+  dummy.style.position = "absolute";
+  dummy.style.width = `${BRACKET_CONFIG.MATCH_WIDTH}px`;
+  dummy.style.whiteSpace = "normal";
+  matchesLayer.appendChild(dummy);
+
+  bracketEntries.forEach((entry) => {
+    dummy.innerHTML = `
+    <div class = "p1">${entry.name}</div>
+    <div class = "p2">${entry.name}</div>
+    `;
+    const height = dummy.offsetHeight;
+    if (height + 10 > BRACKET_CONFIG.MATCH_HEIGHT) {
+      BRACKET_CONFIG.MATCH_HEIGHT = height + 40;
+    }
+  });
+  matchesLayer.removeChild(dummy);
+}
+
 function getX(roundIndex) {
   // zero-indexed round number, +20 built-in padding
   return roundIndex * (BRACKET_CONFIG.MATCH_WIDTH + BRACKET_CONFIG.X_GAP) + 20;
@@ -508,6 +530,9 @@ function displayFinalBracket(resultsObj) {
 
     el.style.left = `${xPosition}px`;
     el.style.top = `${yPosition}px`;
+    el.style.width = `${BRACKET_CONFIG.MATCH_WIDTH}px`;
+    el.style.height = `${BRACKET_CONFIG.MATCH_HEIGHT}px`;
+    el.style.whiteSpace = "normal";
 
     // save coordinates for line attachments
     nodePositions[match.id] = {
@@ -600,6 +625,7 @@ pairArray = generateBracketPairings(
   false,
   true,
 );
+adjustMatchNodeHeight();
 // getFinalMatches(testResult);
-// displayFinalBracket(testResult);
+displayFinalBracket(testResult);
 main(pairArray);
