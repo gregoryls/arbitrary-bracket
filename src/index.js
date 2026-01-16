@@ -538,10 +538,10 @@ function displayFinalBracket(resultsObj) {
         // final round exception
         // winner and loser brackets have same match count, apply current count to l-ID to match
         // winner winner with loser winner in final round
-        const finalRoundId = `l${split[2]}`;
+        const finalMatchId = `l${split[2]}`;
         drawBracketLine(
           nodePositions[key].output,
-          nodePositions[finalRoundId].input,
+          nodePositions[finalMatchId].input,
         );
       }
       if (nodePositions[key].round < maxWinnerRounds)
