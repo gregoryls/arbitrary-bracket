@@ -396,15 +396,16 @@ async function main(pairings) {
   }
 }
 
-function getFinalMatches(resultsObj) {
+function getFinalMatches(resultsObj, entrantCount) {
   const matches = [];
+
   let winnerMatchCount = 1;
   let loserMatchCount = 1;
   let intraRoundMatchCounter = 1;
   let oddLoserRoundCounter = 0;
   let priorOddLoserSpacing = {};
   // pad winner block with 2 spacer rows above losers
-  const losersRowsOffset = nextPowerOfTwo(bracketEntries.length) / 2 + 2;
+  const losersRowsOffset = nextPowerOfTwo(entrantCount) / 2 + 2;
 
   for (const round in resultsObj) {
     // reset counter on each fresh round
@@ -458,7 +459,7 @@ function getFinalMatches(resultsObj) {
           oddLoserRoundCounter += 1;
         }
 
-        if (currentRound === getLoserRoundCount(bracketEntries.length)) {
+        if (currentRound === getLoserRoundCount(entrantCount)) {
           // want 0.5 past winner bracket, but subtract 2 from that to account for the
           // already established offset buffer
           rowCalc = -1.5;
@@ -501,12 +502,14 @@ function drawBracketLine(start, end) {
 }
 
 function displayFinalBracket(resultsObj) {
-  const matches = getFinalMatches(resultsObj);
+  const entrants = resultsObj.winnerRound1.length * 2;
+  const matches = getFinalMatches(resultsObj, entrants);
+
   const nodePositions = {};
-  const halfEntrantCount = nextPowerOfTwo(bracketEntries.length) / 2;
+  const halfEntrantCount = entrants / 2;
   const quarterEntrantCount = halfEntrantCount / 2;
-  const maxWinnerRounds = getWinnerRoundCount(bracketEntries.length);
-  const maxLoserRounds = getLoserRoundCount(bracketEntries.length);
+  const maxWinnerRounds = getWinnerRoundCount(entrants);
+  const maxLoserRounds = getLoserRoundCount(entrants);
   let winnerInputCounter = 1;
   let loserInputCounter = 1;
 
