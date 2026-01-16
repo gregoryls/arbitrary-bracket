@@ -1,7 +1,7 @@
 import "./style.css";
 import bracketEntries from "./items.json";
 import * as utils from "./utils.js";
-import testResult from "./testResult.json";
+import testResult from "./testResult12.json";
 
 // const dynamicImage = require(`./img/${imageName}.jpg`);
 
