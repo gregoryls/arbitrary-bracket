@@ -179,13 +179,14 @@ function entryDiv(entryObj) {
 }
 
 async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
+  nextRoundButton.setAttribute("disabled", "");
   return new Promise((resolve) => {
     let current;
     const confirmSelection = () => {
       entry1Div.removeEventListener("click", onEntry1);
       entry2Div.removeEventListener("click", onEntry2);
       nextRoundButton.removeEventListener("click", confirmSelection);
-      nextRoundButton.toggleAttribute("disabled");
+      nextRoundButton.setAttribute("disabled", "");
       resolve(current);
     };
 
@@ -198,7 +199,7 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
       // css to highlight selected entrant
       entry2Div.classList.remove("roundWinner");
       entry1Div.classList.add("roundWinner");
-      nextRoundButton.toggleAttribute("disabled");
+      nextRoundButton.removeAttribute("disabled");
     };
     const onEntry2 = () => {
       current = { entry2Obj, entry1Obj };
@@ -206,7 +207,7 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
       entry1Obj.win = false;
       entry1Div.classList.remove("roundWinner");
       entry2Div.classList.add("roundWinner");
-      nextRoundButton.toggleAttribute("disabled");
+      nextRoundButton.removeAttribute("disabled");
     };
 
     entry1Div.addEventListener("click", onEntry1);
