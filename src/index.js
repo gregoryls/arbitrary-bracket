@@ -1,7 +1,7 @@
 import "./style.css";
 import bracketEntries from "./items.json";
 import * as utils from "./utils.js";
-import testResult from "./testResult8.json";
+import testResult from "./testResult12.json";
 
 // const dynamicImage = require(`./img/${imageName}.jpg`);
 
@@ -402,7 +402,6 @@ function getFinalMatches(resultsObj, entrantCount) {
   let winnerMatchCount = 1;
   let loserMatchCount = 1;
   let intraRoundMatchCounter = 1;
-  let oddLoserRoundCounter = 0;
   let priorOddLoserSpacing = {};
   // pad winner block with 2 spacer rows above losers
   const losersRowsOffset = nextPowerOfTwo(entrantCount) / 2 + 2;
@@ -449,14 +448,13 @@ function getFinalMatches(resultsObj, entrantCount) {
         }
         if (currentRound > 1 && currentRound % 2 !== 0) {
           // odd rounds
+          const oddLoserRoundCounter = (currentRound - 3) / 2;
           rowCalc =
             Math.pow(2, currentRound - 3 - oddLoserRoundCounter) +
             0.5 +
             Math.pow(2, currentRound - 2 - oddLoserRoundCounter) *
               (intraRoundMatchCounter - 1);
           priorOddLoserSpacing[currentRound].push(rowCalc);
-          intraRoundMatchCounter += 1;
-          oddLoserRoundCounter += 1;
         }
 
         if (currentRound === getLoserRoundCount(entrantCount)) {
