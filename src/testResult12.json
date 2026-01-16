@@ -1,0 +1,420 @@
+{
+  "winnerRound1": [
+    {
+      "entry1": {
+        "name": "The Tainted Cup",
+        "description": "Robert Jackson Bennett",
+        "seed": 1,
+        "win": true
+      },
+      "entry2": {
+        "name": "bye1",
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "The Will of the Many",
+        "description": "James Islington",
+        "seed": 2,
+        "win": true
+      },
+      "entry2": {
+        "name": "bye2",
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "The Fellowship of the Ring",
+        "description": "J. R. R. Tolkien",
+        "seed": 3,
+        "win": true
+      },
+      "entry2": {
+        "name": "bye3",
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "The 100-Year-Old Man Who Climbed Out the Window and Disappeared",
+        "description": "Jonas Jonasson",
+        "seed": 4,
+        "win": true
+      },
+      "entry2": {
+        "name": "bye4",
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "Furies of Calderon",
+        "description": "Jim Butcher",
+        "seed": 5,
+        "win": true
+      },
+      "entry2": {
+        "name": "Red Rabbit",
+        "description": "Alex Grecian",
+        "seed": 12,
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "Steve Jobs",
+        "description": "Walter Isaacson",
+        "seed": 6,
+        "win": true
+      },
+      "entry2": {
+        "name": "Annie Bot",
+        "description": "Sierra Greer",
+        "seed": 11,
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "Stoner",
+        "description": "John Williams",
+        "seed": 7,
+        "win": true
+      },
+      "entry2": {
+        "name": "Frankenstein ",
+        "description": "Mary Shelley",
+        "seed": 10,
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "Old Man's War",
+        "description": "John Scalzi",
+        "seed": 8,
+        "win": true
+      },
+      "entry2": {
+        "name": "The Devils",
+        "description": "Joe Abercrombie",
+        "seed": 9,
+        "win": false
+      }
+    }
+  ],
+  "winnerRound2": [
+    {
+      "entry1": {
+        "name": "The Tainted Cup",
+        "description": "Robert Jackson Bennett",
+        "seed": 1,
+        "win": true
+      },
+      "entry2": {
+        "name": "The Will of the Many",
+        "description": "James Islington",
+        "seed": 2,
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "The Fellowship of the Ring",
+        "description": "J. R. R. Tolkien",
+        "seed": 3,
+        "win": true
+      },
+      "entry2": {
+        "name": "The 100-Year-Old Man Who Climbed Out the Window and Disappeared",
+        "description": "Jonas Jonasson",
+        "seed": 4,
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "Furies of Calderon",
+        "description": "Jim Butcher",
+        "seed": 5,
+        "win": true
+      },
+      "entry2": {
+        "name": "Steve Jobs",
+        "description": "Walter Isaacson",
+        "seed": 6,
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "Stoner",
+        "description": "John Williams",
+        "seed": 7,
+        "win": true
+      },
+      "entry2": {
+        "name": "Old Man's War",
+        "description": "John Scalzi",
+        "seed": 8,
+        "win": false
+      }
+    }
+  ],
+  "winnerRound3": [
+    {
+      "entry1": {
+        "name": "The Tainted Cup",
+        "description": "Robert Jackson Bennett",
+        "seed": 1,
+        "win": true
+      },
+      "entry2": {
+        "name": "The Fellowship of the Ring",
+        "description": "J. R. R. Tolkien",
+        "seed": 3,
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "Furies of Calderon",
+        "description": "Jim Butcher",
+        "seed": 5,
+        "win": true
+      },
+      "entry2": {
+        "name": "Stoner",
+        "description": "John Williams",
+        "seed": 7,
+        "win": false
+      }
+    }
+  ],
+  "winnerRound4": [
+    {
+      "entry1": {
+        "name": "The Tainted Cup",
+        "description": "Robert Jackson Bennett",
+        "seed": 1,
+        "win": true
+      },
+      "entry2": {
+        "name": "Furies of Calderon",
+        "description": "Jim Butcher",
+        "seed": 5,
+        "win": false
+      }
+    }
+  ],
+  "loserRound1": [
+    {
+      "entry1": {
+        "name": "bye1",
+        "win": true
+      },
+      "entry2": {
+        "name": "The Devils",
+        "description": "Joe Abercrombie",
+        "seed": 9,
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "bye2",
+        "win": true
+      },
+      "entry2": {
+        "name": "Frankenstein ",
+        "description": "Mary Shelley",
+        "seed": 10,
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "bye3",
+        "win": true
+      },
+      "entry2": {
+        "name": "Annie Bot",
+        "description": "Sierra Greer",
+        "seed": 11,
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "bye4",
+        "win": true
+      },
+      "entry2": {
+        "name": "Red Rabbit",
+        "description": "Alex Grecian",
+        "seed": 12,
+        "win": false
+      }
+    }
+  ],
+  "loserRound2": [
+    {
+      "entry1": {
+        "name": "The Will of the Many",
+        "description": "James Islington",
+        "seed": 2,
+        "win": true
+      },
+      "entry2": {
+        "name": "bye1",
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "The 100-Year-Old Man Who Climbed Out the Window and Disappeared",
+        "description": "Jonas Jonasson",
+        "seed": 4,
+        "win": true
+      },
+      "entry2": {
+        "name": "bye2",
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "Steve Jobs",
+        "description": "Walter Isaacson",
+        "seed": 6,
+        "win": true
+      },
+      "entry2": {
+        "name": "bye3",
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "Old Man's War",
+        "description": "John Scalzi",
+        "seed": 8,
+        "win": true
+      },
+      "entry2": {
+        "name": "bye4",
+        "win": false
+      }
+    }
+  ],
+  "loserRound3": [
+    {
+      "entry1": {
+        "name": "The Will of the Many",
+        "description": "James Islington",
+        "seed": 2,
+        "win": true
+      },
+      "entry2": {
+        "name": "Old Man's War",
+        "description": "John Scalzi",
+        "seed": 8,
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "The 100-Year-Old Man Who Climbed Out the Window and Disappeared",
+        "description": "Jonas Jonasson",
+        "seed": 4,
+        "win": true
+      },
+      "entry2": {
+        "name": "Steve Jobs",
+        "description": "Walter Isaacson",
+        "seed": 6,
+        "win": false
+      }
+    }
+  ],
+  "loserRound4": [
+    {
+      "entry1": {
+        "name": "The Fellowship of the Ring",
+        "description": "J. R. R. Tolkien",
+        "seed": 3,
+        "win": true
+      },
+      "entry2": {
+        "name": "The Will of the Many",
+        "description": "James Islington",
+        "seed": 2,
+        "win": false
+      }
+    },
+    {
+      "entry1": {
+        "name": "Stoner",
+        "description": "John Williams",
+        "seed": 7,
+        "win": true
+      },
+      "entry2": {
+        "name": "The 100-Year-Old Man Who Climbed Out the Window and Disappeared",
+        "description": "Jonas Jonasson",
+        "seed": 4,
+        "win": false
+      }
+    }
+  ],
+  "loserRound5": [
+    {
+      "entry1": {
+        "name": "The Fellowship of the Ring",
+        "description": "J. R. R. Tolkien",
+        "seed": 3,
+        "win": true
+      },
+      "entry2": {
+        "name": "Stoner",
+        "description": "John Williams",
+        "seed": 7,
+        "win": false
+      }
+    }
+  ],
+  "loserRound6": [
+    {
+      "entry1": {
+        "name": "Furies of Calderon",
+        "description": "Jim Butcher",
+        "seed": 5,
+        "win": true
+      },
+      "entry2": {
+        "name": "The Fellowship of the Ring",
+        "description": "J. R. R. Tolkien",
+        "seed": 3,
+        "win": false
+      }
+    }
+  ],
+  "loserRound7": [
+    {
+      "entry1": {
+        "name": "The Tainted Cup",
+        "description": "Robert Jackson Bennett",
+        "seed": 1,
+        "win": true
+      },
+      "entry2": {
+        "name": "Furies of Calderon",
+        "description": "Jim Butcher",
+        "seed": 5,
+        "win": false
+      }
+    }
+  ]
+}
