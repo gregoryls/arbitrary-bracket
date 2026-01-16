@@ -35,6 +35,18 @@
         "name": "bye3",
         "win": false
       }
+    },
+    {
+      "entry1": {
+        "name": "The 100-Year-Old Man Who Climbed Out the Window and Disappeared",
+        "description": "Jonas Jonasson",
+        "seed": 4,
+        "win": true
+      },
+      "entry2": {
+        "name": "bye4",
+        "win": false
+      }
     }
   ],
   "winnerRound2": [
