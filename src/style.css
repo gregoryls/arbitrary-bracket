@@ -71,7 +71,7 @@ body {
   width: 150px;
   height: 60px;
   background: black;
-  border: 1px solid green;
+  border: 1px solid rgb(136, 122, 0);
   border-radius: 4px;
   z-index: 2;
   display: flex;
@@ -82,4 +82,12 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.winner {
+  color: green;
+}
+
+.loser {
+  color: rgb(255, 0, 0);
 }
