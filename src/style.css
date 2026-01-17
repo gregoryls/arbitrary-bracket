@@ -85,7 +85,7 @@ body {
 }
 
 .winner {
-  color: green;
+  color: rgb(0, 202, 0);
 }
 
 .loser {
