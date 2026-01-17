@@ -435,6 +435,8 @@ function getFinalMatches(resultsObj, entrantCount) {
           row: rowCalc,
           p1: match.entry1.name,
           p2: match.entry2.name,
+          p1win: match.entry1.win,
+          p2win: match.entry2.win,
         };
         winnerMatchCount += 1;
       } else {
@@ -472,6 +474,8 @@ function getFinalMatches(resultsObj, entrantCount) {
           row: rowCalc + losersRowsOffset,
           p1: match.entry1.name,
           p2: match.entry2.name,
+          p1win: match.entry1.win,
+          p2win: match.entry2.win,
         };
         loserMatchCount += 1;
       }
@@ -522,10 +526,18 @@ function displayFinalBracket(resultsObj) {
     el.classList.add("matchNode");
     el.id = match.id;
 
-    el.innerHTML = `
-    <div class = "p1">${match.p1}</div>
-    <div class = "p2">${match.p2}</div>
+    if (match.p1win) {
+      el.innerHTML = `
+    <div class = "p1 winner">${match.p1}</div>
+    <div class = "p2 loser">${match.p2}</div>
     `;
+    }
+    if (match.p2win) {
+      el.innerHTML = `
+    <div class = "p1 loser">${match.p1}</div>
+    <div class = "p2 winner">${match.p2}</div>
+    `;
+    }
     // get and set absolute x,y positions
     const xPosition = getX(match.round);
     const yPosition = getY(match.row);
