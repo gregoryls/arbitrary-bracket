@@ -30,9 +30,9 @@ let nextRound = "loser";
 let bracketComplete = false;
 
 const BRACKET_CONFIG = {
-  MATCH_WIDTH: 150,
+  MATCH_WIDTH: 180,
   MATCH_HEIGHT: 60,
-  X_GAP: 50,
+  X_GAP: 60,
   Y_GAP: 30,
   // x horizontal gap, y vertical
 };
