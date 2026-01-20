@@ -218,7 +218,7 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
 
 async function displayBracketPairings(pairings) {
   const pairingsCopy = structuredClone(pairings);
-  let matchNumber = 1;
+  // let matchNumber = 1;
   for (const pair of pairingsCopy) {
     const entry1 = entryDiv(pair.entry1);
     const entry2 = entryDiv(pair.entry2);
@@ -234,9 +234,13 @@ async function displayBracketPairings(pairings) {
       roundDisplay.textContent = `Loser Round ${loserRoundCount}`;
     }
 
-    matchDisplay.innerHTML = "";
-    matchDisplay.textContent = `Match ${matchNumber}`;
-    matchNumber += 1;
+    // Currently hiding displayed match number to emphasize blind bracket
+    // can be uncommented as desired, remember let matchNumber outside for loop
+    // and p element in html file if changing
+    //
+    // matchDisplay.innerHTML = "";
+    // matchDisplay.textContent = `Match ${matchNumber}`;
+    // matchNumber += 1;
 
     selectionDisplayDiv.innerHTML = "";
     selectionDisplayDiv.append(entry1, entry2);
