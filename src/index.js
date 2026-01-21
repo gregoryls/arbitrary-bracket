@@ -165,6 +165,7 @@ function entryDiv(entryObj) {
   entryWrap.classList.add("entry");
   h2.textContent = entryObj.name;
   p.textContent = entryObj.description;
+  p.classList.add("description");
 
   if (utils.itemImages[entryObj.name]) {
     img.src = utils.itemImages[entryObj.name];
