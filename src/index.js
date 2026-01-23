@@ -281,7 +281,8 @@ async function displayBracketPairings(pairings) {
 
 function displayWinner(winnerObj) {
   roundDisplay.innerHTML = "";
-  matchDisplay.innerHTML = "";
+  // uncomment if re-enabling match number display
+  // matchDisplay.innerHTML = "";
   selectionDisplayDiv.innerHTML = "";
 
   const winner = entryDiv(winnerObj);
