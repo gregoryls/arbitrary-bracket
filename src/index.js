@@ -69,9 +69,14 @@ function getY(matchIndex) {
 }
 
 function nextPowerOfTwo(number) {
-  if (number <= 0 || number > 52 || typeof number !== "number")
-    return undefined;
+  if (number <= 0 || number > 52 || !Number.isInteger(number)) {
+    throw new Error("Submit a reasonable number of entrants");
+  }
+
   const nextPower = 2 ** Math.ceil(Math.log2(number));
+  //  return 1 << Math.ceil(Math.log2(n));
+  // left shift operator also works here and should be slightly faster,
+  // but is less readable for the scope of this project
 
   return nextPower;
 }
