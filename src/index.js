@@ -514,6 +514,7 @@ function drawBracketLine(start, end) {
   path.setAttribute("stroke", "#ffffffff");
   path.setAttribute("stroke-width", "2");
   path.setAttribute("fill", "none");
+  path.setAttribute("vector-effect", "non-scaling-stroke");
 
   bracketLines.append(path);
 }
