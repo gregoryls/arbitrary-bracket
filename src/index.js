@@ -188,13 +188,13 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
   return new Promise((resolve) => {
     let current;
     const confirmSelection = () => {
-      entry1Div.removeEventListener("click", onEntry1);
-      entry2Div.removeEventListener("click", onEntry2);
+      entry1Div.removeEventListener("click", selectEntry1);
+      entry2Div.removeEventListener("click", selectEntry2);
       nextRoundButton.removeEventListener("click", confirmSelection);
       resolve(current);
     };
 
-    const onEntry1 = () => {
+    const selectEntry1 = () => {
       // load selection data to be passed through
       current = { entry1Obj, entry2Obj };
       // set win/loss status
@@ -204,7 +204,7 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
       entry2Div.classList.remove("roundWinner");
       entry1Div.classList.add("roundWinner");
     };
-    const onEntry2 = () => {
+    const selectEntry2 = () => {
       current = { entry2Obj, entry1Obj };
       entry2Obj.win = true;
       entry1Obj.win = false;
@@ -212,8 +212,8 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
       entry2Div.classList.add("roundWinner");
     };
 
-    entry1Div.addEventListener("click", onEntry1);
-    entry2Div.addEventListener("click", onEntry2);
+    entry1Div.addEventListener("click", selectEntry1);
+    entry2Div.addEventListener("click", selectEntry2);
     nextRoundButton.addEventListener("click", confirmSelection);
   });
 }
