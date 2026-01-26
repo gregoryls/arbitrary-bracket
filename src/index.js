@@ -186,17 +186,18 @@ function entryDiv(entryObj) {
 
 async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
   return new Promise((resolve) => {
-    let current;
+    let selection;
     const confirmSelection = () => {
       entry1Div.removeEventListener("click", selectEntry1);
       entry2Div.removeEventListener("click", selectEntry2);
       nextRoundButton.removeEventListener("click", confirmSelection);
-      resolve(current);
+      resolve(selection);
+      // resolve ({winner, loser}) to ease setting win true/false outside
     };
 
     const selectEntry1 = () => {
       // load selection data to be passed through
-      current = { entry1Obj, entry2Obj };
+      selection = { entry1Obj, entry2Obj };
       // set win/loss status
       entry1Obj.win = true;
       entry2Obj.win = false;
@@ -205,7 +206,7 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
       entry1Div.classList.add("roundWinner");
     };
     const selectEntry2 = () => {
-      current = { entry2Obj, entry1Obj };
+      selection = { entry2Obj, entry1Obj };
       entry2Obj.win = true;
       entry1Obj.win = false;
       entry1Div.classList.remove("roundWinner");
