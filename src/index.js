@@ -188,9 +188,7 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
   return new Promise((resolve) => {
     let selection;
     const confirmSelection = () => {
-      entry1Div.removeEventListener("click", selectEntry1);
-      entry2Div.removeEventListener("click", selectEntry2);
-      nextRoundButton.removeEventListener("click", confirmSelection);
+      cleanup();
       resolve(selection);
       // resolve ({winner, loser}) to ease setting win true/false outside
     };
@@ -210,6 +208,11 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
       entry2Div.classList.add("roundWinner");
     };
 
+    const cleanup = () => {
+      entry1Div.removeEventListener("click", selectEntry1);
+      entry2Div.removeEventListener("click", selectEntry2);
+      nextRoundButton.removeEventListener("click", confirmSelection);
+    };
     entry1Div.addEventListener("click", selectEntry1);
     entry2Div.addEventListener("click", selectEntry2);
     nextRoundButton.addEventListener("click", confirmSelection);
