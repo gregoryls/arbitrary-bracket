@@ -101,6 +101,19 @@ function generateByes(numberOfEntrants) {
   }
   return byeObjs;
 }
+
+// recursion testing here //
+
+function createMatch(id, a = null, b = null) {
+  return {
+    id,
+    a,
+    b,
+    winner: null,
+    loser: null,
+  };
+}
+
 function generateBracketPairings(
   bracketEntries,
   byeEntries,
