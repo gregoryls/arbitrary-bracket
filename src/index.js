@@ -197,7 +197,6 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
       // css to highlight selected entrant
       entry2Div.classList.remove("roundWinner");
       entry1Div.classList.add("roundWinner");
-
       nextRoundButton.disabled = false;
     };
     const selectEntry2 = () => {
@@ -205,7 +204,6 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
 
       entry1Div.classList.remove("roundWinner");
       entry2Div.classList.add("roundWinner");
-
       nextRoundButton.disabled = false;
     };
 
