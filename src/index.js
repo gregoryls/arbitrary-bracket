@@ -186,12 +186,9 @@ function entryDiv(entryObj) {
 
 async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
   return new Promise((resolve) => {
-    let selection;
-    const confirmSelection = () => {
-      cleanup();
-      resolve(selection);
-      // resolve ({winner, loser}) to ease setting win true/false outside
-    };
+    let selection = null;
+    let resolved = false;
+    nextRoundButton.disabled = true;
 
     const selectEntry1 = () => {
       // load selection data to be passed through
@@ -200,18 +197,31 @@ async function waitForSelection(entry1Div, entry1Obj, entry2Div, entry2Obj) {
       // css to highlight selected entrant
       entry2Div.classList.remove("roundWinner");
       entry1Div.classList.add("roundWinner");
+
+      nextRoundButton.disabled = false;
     };
     const selectEntry2 = () => {
       selection = { winner: entry2Obj, loser: entry1Obj };
 
       entry1Div.classList.remove("roundWinner");
       entry2Div.classList.add("roundWinner");
+
+      nextRoundButton.disabled = false;
+    };
+
+    const confirmSelection = () => {
+      if (resolved || !selection) return;
+      resolved = true;
+
+      cleanup();
+      resolve(selection);
     };
 
     const cleanup = () => {
       entry1Div.removeEventListener("click", selectEntry1);
       entry2Div.removeEventListener("click", selectEntry2);
       nextRoundButton.removeEventListener("click", confirmSelection);
+      nextRoundButton.disabled = true;
     };
     entry1Div.addEventListener("click", selectEntry1);
     entry2Div.addEventListener("click", selectEntry2);
@@ -248,14 +258,12 @@ async function displayBracketPairings(pairings) {
     selectionDisplayDiv.innerHTML = "";
     selectionDisplayDiv.append(entry1, entry2);
 
-    nextRoundButton.disabled = true;
     const result = await waitForSelection(
       entry1,
       pair.entry1,
       entry2,
       pair.entry2,
     );
-    nextRoundButton.disabled = false;
 
     // log result to match objects
     result.winner.win = true;
