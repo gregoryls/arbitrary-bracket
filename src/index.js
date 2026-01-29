@@ -686,5 +686,5 @@ pairArray = generateBracketPairings(
 );
 adjustMatchNodeHeight();
 // getFinalMatches(testResult);
-displayFinalBracket(testResult);
+// displayFinalBracket(testResult);
 main(pairArray);
