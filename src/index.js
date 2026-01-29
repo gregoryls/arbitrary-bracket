@@ -114,6 +114,14 @@ function createMatch(id, a = null, b = null) {
   };
 }
 
+function createRound(id, type, matches) {
+  return {
+    id,
+    type, // winner, loser, final
+    matches, //array
+  };
+}
+
 function generateBracketPairings(
   bracketEntries,
   byeEntries,
