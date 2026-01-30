@@ -104,6 +104,10 @@ function generateByes(numberOfEntrants) {
 
 // recursion testing here //
 
+function computeByeCount(entries) {
+  return nextPowerOfTwo(entries.length) - entries.length;
+}
+
 function createMatch(id, a = null, b = null) {
   return {
     id,
