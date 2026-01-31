@@ -108,6 +108,21 @@ function computeByeCount(entries) {
   return nextPowerOfTwo(entries.length) - entries.length;
 }
 
+function normalizeEntryCount(entries) {
+  const byes = computeByeCount(entries);
+
+  const entriesComplete = entries.slice();
+
+  for (let i = 0; i < byes; i += 1) {
+    entriesComplete.push({
+      id: `bye-${i}`,
+      isBye: true,
+    });
+  }
+
+  return entriesComplete;
+}
+
 function createMatch(id, a = null, b = null) {
   return {
     id,
