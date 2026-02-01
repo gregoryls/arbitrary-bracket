@@ -102,7 +102,7 @@ function generateByes(numberOfEntrants) {
   return byeObjs;
 }
 
-// recursion testing here //
+// recursion testing here ///////////////////////////////////////////////
 
 function computeByeCount(entries) {
   return nextPowerOfTwo(entries.length) - entries.length;
@@ -140,6 +140,28 @@ function createRound(id, type, matches) {
     matches, //array
   };
 }
+
+function buildRounds(entries) {
+  // ensure entries are coming in as power of two
+  const rounds = [];
+  const winnerRoundsTotal = Math.log2(entries.length);
+
+  // winner bracket
+  let currentEntries = entries.slice();
+  for (let r = 0; r < winnerRoundsTotal; r += 1) {
+    const matches = [];
+    for (let i = 0; i < currentEntries.length; i += 2) {
+      matches.push(
+        createMatch(`w${r}-${i}`, currentEntries[i], currentEntries[i + 1]),
+      );
+    }
+    rounds.push(createRound(`w${r}`, "winner", matches));
+    // currentEntries = new Array(matches.length).fill(null);
+    currentEntries = [];
+  }
+}
+
+// end recursion testing ///////////////////////////////////////////////
 
 function generateBracketPairings(
   bracketEntries,
