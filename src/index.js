@@ -165,6 +165,17 @@ function buildRounds(entries) {
 
   // subtract 1 to skip possible bracket flip final match
   let loserMatchCount = entries.length / 2 - 1;
+  let loserRound = 0;
+
+  while (loserMatchCount >= 1) {
+    const matches = [];
+    for (let i = 0; i < loserMatchCount; i += 1) {
+      matches.push(createMatch(`L${loserRound}-${i}`));
+    }
+    rounds.push(createRound(`L${loserRound}`, "loser", matches));
+    loserMatchCount = Math.floor(loserMatchCount / 2);
+    loserRound += 1;
+  }
 }
 
 // end recursion testing ///////////////////////////////////////////////
