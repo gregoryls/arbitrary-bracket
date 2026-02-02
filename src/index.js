@@ -89,6 +89,7 @@ function getWinnerRoundCount(numberOfEntrants) {
 
 function getLoserRoundCount(numberOfEntrants) {
   const totalCount = nextPowerOfTwo(numberOfEntrants);
+  // subtract 1 if skipping possible bracket flip final round
   const rounds = Math.log2(totalCount) * 2 - 1;
   return rounds;
 }
@@ -159,6 +160,11 @@ function buildRounds(entries) {
     // currentEntries = new Array(matches.length).fill(null);
     currentEntries = [];
   }
+
+  // loser bracker
+
+  // subtract 1 to skip possible bracket flip final match
+  let loserMatchCount = entries.length / 2 - 1;
 }
 
 // end recursion testing ///////////////////////////////////////////////
