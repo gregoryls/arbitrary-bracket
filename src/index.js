@@ -163,8 +163,7 @@ function buildRounds(entries) {
 
   // loser bracker
 
-  // subtract 1 to skip possible bracket flip final match
-  let loserMatchCount = entries.length / 2 - 1;
+  let loserMatchCount = entries.length / 2;
   let loserRound = 0;
 
   while (loserMatchCount >= 1) {
