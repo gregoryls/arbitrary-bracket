@@ -153,10 +153,10 @@ function buildRounds(entries) {
     const matches = [];
     for (let i = 0; i < currentEntries.length; i += 2) {
       matches.push(
-        createMatch(`w${r}-${i}`, currentEntries[i], currentEntries[i + 1]),
+        createMatch(`W${r}-${i}`, currentEntries[i], currentEntries[i + 1]),
       );
     }
-    rounds.push(createRound(`w${r}`, "winner", matches));
+    rounds.push(createRound(`W${r}`, "winner", matches));
     // currentEntries = new Array(matches.length).fill(null);
     currentEntries = [];
   }
