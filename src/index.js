@@ -142,6 +142,14 @@ function createRound(id, type, matches) {
   };
 }
 
+function seedFirstRound(entries) {
+  const matches = [];
+  for (let i = 0, j = entries.length - 1; i < j; i++, j--) {
+    matches.push(createMatch(`W0-${i}`, entries[i], entries[j]));
+  }
+  return matches;
+}
+
 function buildRounds(entries) {
   // ensure entries are coming in as power of two
   const rounds = [];
@@ -149,7 +157,11 @@ function buildRounds(entries) {
 
   // winner bracket
   let currentEntries = entries.slice();
-  for (let r = 0; r < winnerRoundsTotal; r += 1) {
+
+  // first round is seeded separately from input file
+  rounds.push(createRound(`W0`, "winner", seedFirstRound(entries)));
+
+  for (let r = 1; r < winnerRoundsTotal; r += 1) {
     const matches = [];
     for (let i = 0; i < currentEntries.length; i += 2) {
       matches.push(
@@ -163,7 +175,7 @@ function buildRounds(entries) {
 
   // loser bracker
 
-  let loserMatchCount = entries.length / 2;
+  let loserMatchCount = currentEntries.length / 2;
   let loserRound = 0;
 
   while (loserMatchCount >= 1) {
