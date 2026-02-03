@@ -153,24 +153,22 @@ function seedFirstRound(entries) {
 function buildRounds(entries) {
   // ensure entries are coming in as power of two
   const rounds = [];
-  const winnerRoundsTotal = Math.log2(entries.length);
+  const numberOfEntrants = entries.length;
+  const winnerRoundsTotal = Math.log2(numberOfEntrants);
 
   // winner bracket
-  let currentEntries = entries.slice();
 
   // first round is seeded separately from input file
   rounds.push(createRound(`W0`, "winner", seedFirstRound(entries)));
 
+  let matchesInRound = numberOfEntrants / 4; // first round above, begin with second round here
   for (let r = 1; r < winnerRoundsTotal; r += 1) {
     const matches = [];
-    for (let i = 0; i < currentEntries.length; i += 2) {
-      matches.push(
-        createMatch(`W${r}-${i}`, currentEntries[i], currentEntries[i + 1]),
-      );
+    for (let i = 0; i < matchesInRound; i += 1) {
+      matches.push(createMatch(`W${r}-${i}`));
     }
     rounds.push(createRound(`W${r}`, "winner", matches));
-    // currentEntries = new Array(matches.length).fill(null);
-    currentEntries = [];
+    matchesInRound /= 2;
   }
 
   // loser bracker
