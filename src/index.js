@@ -161,30 +161,34 @@ function buildRounds(entries) {
   // first round is seeded separately from input file
   rounds.push(createRound(`W0`, "winner", seedFirstRound(entries)));
 
-  let matchesInRound = numberOfEntrants / 4; // first round above, begin with second round here
+  let winnerMatchesInRound = numberOfEntrants / 4; // first round above, begin with second round here
+  // index on 1 because 0 round happens above
   for (let r = 1; r < winnerRoundsTotal; r += 1) {
     const matches = [];
-    for (let i = 0; i < matchesInRound; i += 1) {
+    for (let i = 0; i < winnerMatchesInRound; i += 1) {
       matches.push(createMatch(`W${r}-${i}`));
     }
     rounds.push(createRound(`W${r}`, "winner", matches));
-    matchesInRound /= 2;
+    winnerMatchesInRound /= 2;
   }
 
-  // loser bracker
+  // loser bracket
 
-  let loserMatchCount = currentEntries.length / 2;
-  let loserRound = 0;
+  let loserEntries = numberOfEntrants / 2;
+  const loserRoundsTotal = 2 * winnerRoundsTotal - 1;
 
-  while (loserMatchCount >= 1) {
+  for (let lr = 0; lr < loserRoundsTotal; lr += 1) {
     const matches = [];
-    for (let i = 0; i < loserMatchCount; i += 1) {
-      matches.push(createMatch(`L${loserRound}-${i}`));
+    const loserMatchesInRound = loserEntries / 2;
+
+    for (let i = 0; i < loserMatchesInRound; i += 1) {
+      matches.push(createMatch(`L${lr}-${i}`));
     }
-    rounds.push(createRound(`L${loserRound}`, "loser", matches));
-    loserMatchCount = Math.floor(loserMatchCount / 2);
-    loserRound += 1;
+
+    rounds.push(createRound(`L${lr}`, "loser", matches));
   }
+
+  // update loser entrant count
 }
 
 // end recursion testing ///////////////////////////////////////////////
