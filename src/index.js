@@ -186,9 +186,14 @@ function buildRounds(entries) {
     }
 
     rounds.push(createRound(`L${lr}`, "loser", matches));
-  }
 
-  // update loser entrant count
+    // update loser entrant count
+    // every other lose round halves the field
+    if (lr % 2 !== 0) {
+      loserEntries /= 2;
+    }
+    
+    return rounds;
 }
 
 // end recursion testing ///////////////////////////////////////////////
