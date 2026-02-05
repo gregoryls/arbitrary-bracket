@@ -152,6 +152,10 @@ function seedFirstRound(entries) {
 
 function buildRounds(entries) {
   // ensure entries are coming in as power of two
+  if (!Number.isInteger(Math.log2(entries.length))) {
+    throw new Error("buildRounds requires a power-of-two entrant count");
+  }
+
   const rounds = [];
   const numberOfEntrants = entries.length;
   const winnerRoundsTotal = Math.log2(numberOfEntrants);
@@ -755,7 +759,9 @@ function displayFinalBracket(resultsObj) {
 }
 
 // recursion testing //////////////////////////
-
+const normalizedEntries = normalizeEntryCount(bracketEntries);
+const bracket = buildRounds(normalizedEntries);
+console.log(bracket);
 // end recursion testing /////////////////////////
 
 pairArray = generateBracketPairings(
@@ -766,5 +772,5 @@ pairArray = generateBracketPairings(
 );
 adjustMatchNodeHeight();
 // getFinalMatches(testResult);
-// displayFinalBracket(testResult);
+displayFinalBracket(testResult);
 main(pairArray);
