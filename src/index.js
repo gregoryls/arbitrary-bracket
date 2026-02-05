@@ -192,8 +192,8 @@ function buildRounds(entries) {
     if (lr % 2 !== 0) {
       loserEntries /= 2;
     }
-    
-    return rounds;
+  }
+  return rounds;
 }
 
 // end recursion testing ///////////////////////////////////////////////
@@ -753,6 +753,10 @@ function displayFinalBracket(resultsObj) {
   // drawBracketLine(nodePositions["m1"].output, nodePositions["m3"].input);
   // drawBracketLine(nodePositions["m2"].output, nodePositions["m3"].input);
 }
+
+// recursion testing //////////////////////////
+
+// end recursion testing /////////////////////////
 
 pairArray = generateBracketPairings(
   bracketEntries,
