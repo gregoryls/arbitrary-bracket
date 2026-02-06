@@ -165,7 +165,8 @@ function buildRounds(entries) {
   // first round is seeded separately from input file
   rounds.push(createRound(`W0`, "winner", seedFirstRound(entries)));
 
-  let winnerMatchesInRound = numberOfEntrants / 4; // first round above, begin with second round here
+  // first round above, begin with second round here (winner round size decreases by half each round)
+  let winnerMatchesInRound = rounds[0].matches.length / 2;
   // index on 1 because 0 round happens above
   for (let r = 1; r < winnerRoundsTotal; r += 1) {
     const matches = [];
