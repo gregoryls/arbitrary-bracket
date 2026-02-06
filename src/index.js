@@ -182,6 +182,7 @@ function buildRounds(entries) {
 
   let loserEntries = numberOfEntrants / 2;
   const loserRoundsTotal = 2 * winnerRoundsTotal - 1;
+  let mode = "intake";
 
   for (let lr = 0; lr < loserRoundsTotal; lr += 1) {
     const matches = [];
@@ -191,12 +192,15 @@ function buildRounds(entries) {
       matches.push(createMatch(`L${lr}-${i}`));
     }
 
-    rounds.push(createRound(`L${lr}`, "loser", matches));
+    rounds.push(createRound(`L${lr}`, "loser", matches, mode));
 
     // update loser entrant count
     // every other lose round halves the field
     if (lr % 2 !== 0) {
       loserEntries /= 2;
+      mode = "elimination";
+    } else {
+      mode = "intake";
     }
   }
   return rounds;
