@@ -144,6 +144,11 @@ function createRound(id, type, matches, mode = null) {
   };
 }
 
+function getLoserRoundMode(loserRound) {
+  if (loserRound <= 1) return "intake";
+  return loserRound % 2 === 1 ? "intake" : "elimination";
+}
+
 function seedFirstRound(entries) {
   const matches = [];
   for (let i = 0, j = entries.length - 1; i < j; i++, j--) {
@@ -183,7 +188,6 @@ function buildRounds(entries) {
 
   let loserEntries = numberOfEntrants / 2;
   const loserRoundsTotal = 2 * winnerRoundsTotal - 2;
-  let mode = "intake";
 
   for (let lr = 0; lr < loserRoundsTotal; lr += 1) {
     const matches = [];
@@ -193,6 +197,7 @@ function buildRounds(entries) {
       matches.push(createMatch(`L${lr}-${i}`, i));
     }
 
+    const mode = lr % 2 === 0 ? "intake" : "elimination";
     rounds.push(createRound(`L${lr}`, "loser", matches, mode));
 
     // update loser entrant count
