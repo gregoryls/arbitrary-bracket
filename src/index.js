@@ -206,7 +206,7 @@ function buildRounds(entries) {
     }
   }
   const finalMatch = [];
-  finalMatch.push(createMatch(`F0`, loserRoundsTotal + 1, 0));
+  finalMatch.push(createMatch(`F0-0`, loserRoundsTotal + 1, 0));
   rounds.push(createRound("F0", "final", finalMatch));
   return rounds;
 }
