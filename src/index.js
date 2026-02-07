@@ -183,7 +183,7 @@ function buildRounds(entries) {
   // loser bracket
 
   let loserEntries = numberOfEntrants / 2;
-  const loserRoundsTotal = 2 * winnerRoundsTotal - 1;
+  const loserRoundsTotal = 2 * winnerRoundsTotal - 2;
   let mode = "intake";
 
   for (let lr = 0; lr < loserRoundsTotal; lr += 1) {
@@ -205,6 +205,9 @@ function buildRounds(entries) {
       mode = "intake";
     }
   }
+  const finalMatch = [];
+  finalMatch.push(createMatch(`F0`, loserRoundsTotal + 1, 0));
+  rounds.push(createRound("F0", "final", finalMatch));
   return rounds;
 }
 
