@@ -124,9 +124,11 @@ function normalizeEntryCount(entries) {
   return entriesComplete;
 }
 
-function createMatch(id, a = null, b = null) {
+function createMatch(id, round, index, a = null, b = null) {
   return {
     id,
+    round,
+    index,
     a,
     b,
     winner: null,
@@ -146,7 +148,7 @@ function createRound(id, type, matches, mode = null) {
 function seedFirstRound(entries) {
   const matches = [];
   for (let i = 0, j = entries.length - 1; i < j; i++, j--) {
-    matches.push(createMatch(`W0-${i}`, entries[i], entries[j]));
+    matches.push(createMatch(`W0-${i}`, 0, i, entries[i], entries[j]));
   }
   return matches;
 }
@@ -172,7 +174,7 @@ function buildRounds(entries) {
   for (let r = 1; r < winnerRoundsTotal; r += 1) {
     const matches = [];
     for (let i = 0; i < winnerMatchesInRound; i += 1) {
-      matches.push(createMatch(`W${r}-${i}`));
+      matches.push(createMatch(`W${r}-${i}`, r, i));
     }
     rounds.push(createRound(`W${r}`, "winner", matches));
     winnerMatchesInRound /= 2;
@@ -189,7 +191,7 @@ function buildRounds(entries) {
     const loserMatchesInRound = loserEntries / 2;
 
     for (let i = 0; i < loserMatchesInRound; i += 1) {
-      matches.push(createMatch(`L${lr}-${i}`));
+      matches.push(createMatch(`L${lr}-${i}`, lr, i));
     }
 
     rounds.push(createRound(`L${lr}`, "loser", matches, mode));
