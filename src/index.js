@@ -197,11 +197,12 @@ function buildRounds(entries) {
       matches.push(createMatch(`L${lr}-${i}`, i));
     }
 
-    const mode = lr % 2 === 0 ? "intake" : "elimination";
+    const mode = getLoserRoundMode(lr);
     rounds.push(createRound(`L${lr}`, "loser", matches, mode));
 
     // update loser entrant count
     // every other lose round halves the field
+    // TODO fix this mode assignment, change to if mode=elim
     if (lr % 2 !== 0) {
       loserEntries /= 2;
       mode = "elimination";
