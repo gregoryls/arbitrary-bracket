@@ -204,6 +204,11 @@ function buildRounds(entries) {
       mode = "intake";
     }
   }
+
+  if (loserEntries !== 1) {
+    throw new Error("Loser bracket did not resolve to a single finalist");
+  }
+
   const finalMatch = [];
   finalMatch.push(createMatch(`F0-0`, 0));
   rounds.push(createRound("F0", "final", finalMatch));
