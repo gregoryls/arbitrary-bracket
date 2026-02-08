@@ -201,13 +201,11 @@ function buildRounds(entries) {
     rounds.push(createRound(`L${lr}`, "loser", matches, mode));
 
     // update loser entrant count
-    // every other lose round halves the field
-    // TODO fix this mode assignment, change to if mode=elim
-    if (lr % 2 !== 0) {
+    // every other loser round halves the field
+    // first round is special before pattern begins
+    if (mode === "intake" && lr > 0) {
+      // this prepares for the next round
       loserEntries /= 2;
-      mode = "elimination";
-    } else {
-      mode = "intake";
     }
   }
 
