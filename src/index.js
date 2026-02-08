@@ -223,6 +223,11 @@ function buildRounds(entries) {
   return rounds;
 }
 
+function wireBracket(rounds) {
+  // convert rounds data to use id ('W0' e.g.) as key value
+  const roundById = Object.fromEntries(rounds.map((r) => [r.id, r]));
+  console.log(roundById);
+}
 // end recursion testing ///////////////////////////////////////////////
 
 function generateBracketPairings(
@@ -785,6 +790,7 @@ function displayFinalBracket(resultsObj) {
 const normalizedEntries = normalizeEntryCount(bracketEntries);
 const bracket = buildRounds(normalizedEntries);
 console.log(bracket);
+wireBracket(bracket);
 // end recursion testing /////////////////////////
 
 pairArray = generateBracketPairings(
