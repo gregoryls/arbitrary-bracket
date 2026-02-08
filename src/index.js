@@ -132,6 +132,10 @@ function createMatch(id, index, a = null, b = null) {
     b,
     winner: null,
     loser: null,
+    next: {
+      winner: null,
+      loser: null,
+    },
   };
 }
 
