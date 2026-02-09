@@ -229,7 +229,30 @@ function wireBracket(rounds) {
   // convert rounds data to use id ('W0' e.g.) as key value
   const roundById = Object.fromEntries(rounds.map((r) => [r.id, r]));
   console.log(roundById);
+
+  for (const round of rounds) {
+    const { id, type, matches, mode } = round;
+
+    matches.forEach((match, i) => {
+      match.next = { winner: null, loser: null };
+
+      if (type === "winner") {
+        //handle winner
+      }
+
+      if (type === "loser") {
+        //handle loser
+      }
+
+      if (type === "final") {
+        // end point
+        //probably nothing in this block
+      }
+    });
+  }
 }
+
+function wireWinnerMatch(match) {}
 // end recursion testing ///////////////////////////////////////////////
 
 function generateBracketPairings(
@@ -635,7 +658,7 @@ function getFinalMatches(resultsObj, entrantCount) {
       matches.push(obj);
     }
   }
-  console.log(matches);
+  // console.log(matches);
   return matches;
 }
 
@@ -721,7 +744,7 @@ function displayFinalBracket(resultsObj) {
   bracketContainer.style.height = `${totalHeight}px`;
   bracketContainer.style.width = `${totalWidth}px`;
 
-  console.log(nodePositions);
+  // console.log(nodePositions);
   Object.keys(nodePositions).forEach((key) => {
     const split = key.match(/([wl])(\d+)/);
     if (split[1] === "w") {
@@ -732,7 +755,7 @@ function displayFinalBracket(resultsObj) {
         // winner and loser brackets have same match count, apply current count to l-ID to match
         // winner winner with loser winner in final round
         const finalMatchId = `l${split[2]}`;
-        console.log(finalMatchId);
+        // console.log(finalMatchId);
         drawBracketLine(
           nodePositions[key].output,
           nodePositions[finalMatchId].input,
