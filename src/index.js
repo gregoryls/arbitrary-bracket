@@ -235,6 +235,7 @@ function wireBracket(rounds) {
 
     matches.forEach((match, i) => {
       match.next = { winner: null, loser: null };
+      console.log(match);
 
       if (type === "winner") {
         //handle winner
@@ -252,7 +253,10 @@ function wireBracket(rounds) {
   }
 }
 
-function wireWinnerMatch(match) {}
+function wireWinnerMatch(match, roundById) {
+  const currentRound = match.round;
+  const nextWinnerRound = roundById[`W${currentRound + 1}`];
+}
 // end recursion testing ///////////////////////////////////////////////
 
 function generateBracketPairings(
