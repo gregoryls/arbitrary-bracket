@@ -253,9 +253,18 @@ function wireBracket(rounds) {
   }
 }
 
-function wireWinnerMatch(match, roundById) {
+function wireWinnerMatch(match, i, roundById) {
   const currentRound = match.round;
   const nextWinnerRound = roundById[`W${currentRound + 1}`];
+
+  // winner advances within winner bracket
+  if (nextWinnerRound) {
+    match.next.winner = {
+      roundId: nextWinnerRound.id,
+      matchIndex: Math.floor(i / 2),
+      slot: i % 2 === 0 ? "a" : "b",
+    };
+  }
 }
 // end recursion testing ///////////////////////////////////////////////
 
