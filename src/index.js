@@ -225,6 +225,12 @@ function buildRounds(entries) {
   return rounds;
 }
 
+function getLoserIntakeRoundForWinnerRound(round) {
+  // after initial L0, winner rounds only feed into every other loser round
+  if (round === 0) return 0;
+  return 2 * round - 1;
+}
+
 function wireBracket(rounds) {
   // convert rounds data to use id ('W0' e.g.) as key value
   const roundById = Object.fromEntries(rounds.map((r) => [r.id, r]));
@@ -265,6 +271,8 @@ function wireWinnerMatch(match, i, roundById) {
       slot: i % 2 === 0 ? "a" : "b",
     };
   }
+
+  // loser drops down to loser bracket
 }
 // end recursion testing ///////////////////////////////////////////////
 
