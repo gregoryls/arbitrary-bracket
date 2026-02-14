@@ -273,6 +273,8 @@ function wireWinnerMatch(match, i, roundById) {
   }
 
   // loser drops down to loser bracket
+  const loserRoundIndex = getLoserIntakeRoundForWinnerRound(currentRound);
+  const loserRound = roundById[`L${loserRoundIndex}`];
 }
 // end recursion testing ///////////////////////////////////////////////
 
